@@ -1,4 +1,4 @@
-package main.java.equipo.proyecto;
+package equipo.proyecto;
 
 public class LibroTecnico extends Publicacion {
     
@@ -13,7 +13,8 @@ public class LibroTecnico extends Publicacion {
     }
 
 
-    public String getTipo() {
+    @Override
+    public String getGenero() {
         return "Libro Técnico";
     }
 

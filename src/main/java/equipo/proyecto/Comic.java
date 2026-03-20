@@ -1,7 +1,5 @@
-package main.java.equipo.proyecto;
+package equipo.proyecto;
 
-/**
- */
 public class Comic extends Publicacion {
 
     private String ilustrador;
@@ -18,7 +16,8 @@ public class Comic extends Publicacion {
         this.demografia = demografia;
     }
 
-    public String getTipo() {
+    @Override
+    public String getGenero() {
         return "Comic";
     }
 
