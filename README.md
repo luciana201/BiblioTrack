@@ -41,8 +41,6 @@ Realizado para organizar, gestionar y hacer seguimiento de tus publicaciones (c√
 
 <div align="center">
 
-| Miembro |
-|---------|
 | **Luciana** |
 | **Dayana** |
 
