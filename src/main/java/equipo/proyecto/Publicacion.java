@@ -1,5 +1,4 @@
 package main.java.equipo.proyecto;
-
 import java.util.List;
 import java.util.ArrayList;
 
@@ -51,11 +50,14 @@ public abstract class Publicacion {
         return estado;
     }
 
+    public void setEstado(EstadoLectura estado) {
+        this.estado = estado;
+    }
+
     public List<Reseña> getReseñas() {
         return reseñas;
     }
+    
+    public abstract String getInfoDetallada();
 
-    public String getInfoDetallada() {
-        return "Narrador: " + " | Paginas: ";
-    }
 }
