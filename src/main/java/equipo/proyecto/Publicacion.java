@@ -56,5 +56,8 @@ public abstract class Publicacion {
     }
     public void setEstado(EstadoLectura estado) {
         this.estado = estado;
+
+    public String getInfoDetallada() {
+        return "Narrador: " + " | Paginas: ";
     }
 }
