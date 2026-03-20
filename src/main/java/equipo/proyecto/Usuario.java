@@ -1,10 +1,5 @@
 package main.java.equipo.proyecto;
 
-<<<<<<< HEAD
-public class Usuario {
-    
-}
-=======
 import java.util.List;
 
 public class Usuario{
@@ -14,4 +9,3 @@ public class Usuario{
     private List<Reseña> reseñas;
 }
 
->>>>>>> bc9e28362279665ec61dddb65bc5e8f4418650b6

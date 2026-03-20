@@ -1,11 +1,4 @@
 package main.java.equipo.proyecto;
-<<<<<<< HEAD
-
-public class Reseña 
-{
-    
-}
-=======
 import java.time.LocalDate;
 
 public class Reseña {
@@ -16,4 +9,3 @@ public class Reseña {
     private Usuario usuario;
     //Publicacion publicacion;
 }
->>>>>>> bc9e28362279665ec61dddb65bc5e8f4418650b6

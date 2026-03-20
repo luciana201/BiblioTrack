@@ -54,4 +54,8 @@ public abstract class Publicacion {
     public List<Reseña> getReseñas() {
         return reseñas;
     }
+
+    public String getInfoDetallada() {
+        return "Narrador: " + " | Paginas: ";
+    }
 }
