@@ -8,20 +8,15 @@ public class Biblioteca {
     private ArrayList<Publicacion> publicaciones;
     private HashMap<String, ArrayList<Publicacion>> categorias;
     private ArrayList<Usuario> usuarios;
-    public Biblioteca(String pnombre){
-        this.nombre = pnombre;
+    public Biblioteca(){
         this.publicaciones = new ArrayList<>();
         this.categorias = new HashMap<>();
         this.usuarios = new ArrayList<>();
     }
-    public String getNombre(){
-        return this.nombre;
-    }
-    public void setNombre(String pnombre){
-        this.nombre = pnombre;
-    }
+
     public void agregarPublicacion(Publicacion publicacion){
-    }
+        this.publicaciones.add(publicacion);
+    }  
     public boolean eliminarPublicacion(String titulo){
         return false;
     }
@@ -55,9 +50,12 @@ public class Biblioteca {
         return null;
     }
     public ArrayList<Publicacion> getLibrosEstado(EstadoLectura estado){
-        return null;
+        return publicaciones;
     }
     public ArrayList<Publicacion> getLibrosGenero(String genero){
-        return null;
+        return publicaciones;
+    }
+    public ArrayList<Publicacion> getLibros(){
+        return publicaciones;
     }
 }
