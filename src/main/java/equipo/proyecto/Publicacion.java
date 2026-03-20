@@ -54,4 +54,7 @@ public abstract class Publicacion {
     public List<Reseña> getReseñas() {
         return reseñas;
     }
+    public void setEstado(EstadoLectura estado) {
+        this.estado = estado;
+    }
 }
