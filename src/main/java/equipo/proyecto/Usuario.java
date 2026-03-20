@@ -1,19 +1,20 @@
-package main.java.equipo.proyecto;
+package equipo.proyecto;
 
 import java.util.List;
 
 public class Usuario{
-    private int id;
+    private String id;
     private String nombre;
     private String email;
     private List<Reseña> reseñas;
 
-    public Usuario (String pnombre, String pemail){
+    public Usuario (String pnombre, String uID, String pemail){ // uID = ID unico de usuario
         this.nombre = pnombre;
         this.email = pemail;
+        this.id = uID;
     }
 
-    public int getId(){
+    public String getId(){
         return this.id;
     }
 

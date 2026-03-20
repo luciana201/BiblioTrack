@@ -1,4 +1,4 @@
-package main.java.equipo.proyecto;
+package equipo.proyecto;
 import java.io.*;
 
 public class GestorArchivos {

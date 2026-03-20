@@ -1,4 +1,4 @@
-package main.java.equipo.proyecto;
+package equipo.proyecto;
 public class Novela extends Publicacion {
 
     private String tipoNarrador;
