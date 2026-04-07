@@ -16,6 +16,16 @@ public class Comic extends Publicacion {
         this.demografia = demografia;
     }
 
+    public Comic(String id, String titulo, String autor, int añoPublicacion,
+                 String isbn, String genero, String ilustrador,
+                 int volumen, String demografia) {
+
+        super(id, titulo, autor, añoPublicacion, isbn, genero);
+        this.ilustrador = ilustrador;
+        this.volumen = volumen;
+        this.demografia = demografia;
+    }
+
     @Override
     public String getGenero() {
         return "Comic";
@@ -28,6 +38,12 @@ public class Comic extends Publicacion {
                " | Demografia: " + demografia;
     }
 
+    @Override
+    protected String getJsonExtra() {
+        return ",\"ilustrador\":\"" + escapeJson(ilustrador) +
+               "\",\"volumen\":" + volumen +
+               ",\"demografia\":\"" + escapeJson(demografia) + "\"";
+    }
 
     public String getIlustrador() {
         return ilustrador;
@@ -40,7 +56,6 @@ public class Comic extends Publicacion {
     public String getDemografia() {
         return demografia;
     }
-
 
     public void setIlustrador(String ilustrador) {
         this.ilustrador = ilustrador;

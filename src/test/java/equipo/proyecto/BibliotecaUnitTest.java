@@ -65,4 +65,16 @@ public class BibliotecaUnitTest {
         assertNotNull(mejor);
         assertEquals(novela.getTitulo(), mejor.getTitulo());
     }
+
+    @Test
+    @DisplayName("Búsqueda y agrupación con streams y expresiones regulares")
+    void testStreamsYRegex() {
+        biblioteca.agregarReseña(comic.getTitulo(), new Reseña("Ok", 8, usuario, comic));
+        biblioteca.agregarReseña(novela.getTitulo(), new Reseña("Obra", 10, usuario, novela));
+
+        assertFalse(biblioteca.buscarPorTituloRegex("Super").isEmpty());
+        assertEquals(1, biblioteca.buscarPorGeneroSecundario("Comic").size());
+        assertEquals(3, biblioteca.getPublicacionesAgrupadasPorGenero().size());
+        assertEquals(9.0, biblioteca.getPromedioCalificacionGeneral(), 0.1);
+    }
 }

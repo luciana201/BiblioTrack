@@ -40,4 +40,18 @@ public class GestorArchivosTest {
         java.io.File f = new java.io.File(ruta);
         if (f.exists()) f.delete();
     }
+
+    @Test
+    @DisplayName("Buscar publicación por id usando RandomAccessFile")
+    void testBuscarPorId() {
+        String ruta = "test_biblioteca_id.txt";
+        GestorArchivos.guardarBiblioteca(biblioteca, ruta);
+        String idBuscado = biblioteca.getLibros().get(0).getId();
+        Publicacion encontrado = GestorArchivos.buscarPorId(ruta, idBuscado);
+        assertNotNull(encontrado);
+        assertEquals(biblioteca.getLibros().get(0).getTitulo(), encontrado.getTitulo());
+
+        java.io.File f = new java.io.File(ruta);
+        if (f.exists()) f.delete();
+    }
 }

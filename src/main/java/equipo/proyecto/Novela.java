@@ -1,4 +1,5 @@
 package equipo.proyecto;
+
 public class Novela extends Publicacion {
 
     private String tipoNarrador;
@@ -13,6 +14,15 @@ public class Novela extends Publicacion {
         this.numeroPaginas = numeroPaginas;
     }
 
+    public Novela(String id, String titulo, String autor, int añoPublicacion,
+                  String isbn, String genero, String tipoNarrador,
+                  int numeroPaginas) {
+
+        super(id, titulo, autor, añoPublicacion, isbn, genero);
+        this.tipoNarrador = tipoNarrador;
+        this.numeroPaginas = numeroPaginas;
+    }
+
     @Override
     public String getGenero() {
         return "Novela";
@@ -22,6 +32,12 @@ public class Novela extends Publicacion {
     public String getInfoDetallada() {
         return "Narrador: " + tipoNarrador +
                " | Paginas: " + numeroPaginas;
+    }
+
+    @Override
+    protected String getJsonExtra() {
+        return ",\"tipoNarrador\":\"" + escapeJson(tipoNarrador) +
+               "\",\"numeroPaginas\":" + numeroPaginas;
     }
 
     public String getTipoNarrador() {
