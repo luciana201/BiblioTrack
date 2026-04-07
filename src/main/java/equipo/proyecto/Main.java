@@ -62,12 +62,12 @@ public class Main {
         Publicacion publicacion;
         if (tipo.equalsIgnoreCase("COMIC")) {
             String ilustrador = leerTexto(scanner, "Ilustrador", PATTERN_TEXTO);
-            int volumen = Integer.parseInt(leerTexto(scanner, "Volumen", Pattern.compile("^[1-9]\\\d*$")));
+            int volumen = Integer.parseInt(leerTexto(scanner, "Volumen", Pattern.compile("^[1-9]\\d*$")));
             String demografia = leerTexto(scanner, "Demografía", PATTERN_TEXTO);
             publicacion = new Comic(titulo, autor, año, isbn, genero, ilustrador, volumen, demografia);
         } else if (tipo.equalsIgnoreCase("NOVELA")) {
             String narrador = leerTexto(scanner, "Tipo de narrador", PATTERN_TEXTO);
-            int paginas = Integer.parseInt(leerTexto(scanner, "Número de páginas", Pattern.compile("^[1-9]\\\d*$")));
+            int paginas = Integer.parseInt(leerTexto(scanner, "Número de páginas", Pattern.compile("^[1-9]\\d*$")));
             publicacion = new Novela(titulo, autor, año, isbn, genero, narrador, paginas);
         } else {
             String tema = leerTexto(scanner, "Tema", PATTERN_TEXTO);
