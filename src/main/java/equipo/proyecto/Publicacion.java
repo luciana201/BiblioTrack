@@ -25,7 +25,9 @@ public abstract class Publicacion {
         this.genero = genero;
         this.estado = EstadoLectura.PENDIENTE;
         this.reseñas = new ArrayList<>();
-        actualizarSiguienteId(id);
+        if (id != null && id.matches("\\d+")) {
+            actualizarSiguienteId(id);
+        }
     }
 
     public Publicacion(String titulo, String autor, int añoPublicacion, String isbn, String genero) {

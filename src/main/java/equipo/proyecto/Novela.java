@@ -2,24 +2,19 @@ package equipo.proyecto;
 
 public class Novela extends Publicacion {
 
-    private String tipoNarrador;
     private int numeroPaginas;
 
     public Novela(String titulo, String autor, int añoPublicacion,
-                  String isbn, String genero, String tipoNarrador,
+                  String isbn, String genero,
                   int numeroPaginas) {
 
         super(titulo, autor, añoPublicacion, isbn, genero);
-        this.tipoNarrador = tipoNarrador;
         this.numeroPaginas = numeroPaginas;
     }
 
     public Novela(String id, String titulo, String autor, int añoPublicacion,
-                  String isbn, String genero, String tipoNarrador,
-                  int numeroPaginas) {
-
+                  String isbn, String genero, int numeroPaginas) {
         super(id, titulo, autor, añoPublicacion, isbn, genero);
-        this.tipoNarrador = tipoNarrador;
         this.numeroPaginas = numeroPaginas;
     }
 
@@ -30,26 +25,16 @@ public class Novela extends Publicacion {
 
     @Override
     public String getInfoDetallada() {
-        return "Narrador: " + tipoNarrador +
-               " | Paginas: " + numeroPaginas;
+        return "Paginas: " + numeroPaginas;
     }
 
     @Override
     protected String getJsonExtra() {
-        return ",\"tipoNarrador\":\"" + escapeJson(tipoNarrador) +
-               "\",\"numeroPaginas\":" + numeroPaginas;
-    }
-
-    public String getTipoNarrador() {
-        return tipoNarrador;
+        return ",\"numeroPaginas\":" + numeroPaginas;
     }
 
     public int getNumeroPaginas() {
         return numeroPaginas;
-    }
-
-    public void setTipoNarrador(String tipoNarrador) {
-        this.tipoNarrador = tipoNarrador;
     }
 
     public void setNumeroPaginas(int numeroPaginas) {

@@ -1,10 +1,10 @@
 package equipo.proyecto;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.DisplayName;
-
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
 
 @DisplayName("Tests unitarios para Reseña")
 public class ReseñaTest {
@@ -14,8 +14,7 @@ public class ReseñaTest {
     @BeforeEach
     void setUp() {
         usuario = new Usuario("Juan Pérez", "jPerez", "juan@example.com");
-        comic = new Comic("Superman", "DC Comics", 1938, "123-456", "Comic",
-                "Joe Shuster", 1, "Superhéroes");
+        comic = new Comic("Superman", "DC Comics", 1938, "123-456", "Comic", 1, "Superhéroes");
     }
 
     @Test

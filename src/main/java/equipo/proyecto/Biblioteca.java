@@ -12,13 +12,11 @@ import java.util.stream.Collectors;
 public class Biblioteca {
     private String nombre;
     private ArrayList<Publicacion> publicaciones;
-    private HashMap<String, ArrayList<Publicacion>> categorias;
     private HashMap<String, List<Publicacion>> indiceSecundario;
     private ArrayList<Usuario> usuarios;
 
     public Biblioteca() {
         this.publicaciones = new ArrayList<>();
-        this.categorias = new HashMap<>();
         this.indiceSecundario = new HashMap<>();
         this.usuarios = new ArrayList<>();
     }
@@ -108,12 +106,25 @@ public class Biblioteca {
     }
 
     public Usuario buscarUsuarioID(String nombre) {
+        return buscarUsuario(nombre);
+    }
+
+    public Usuario buscarUsuario(String identificador) {
+        if (identificador == null || identificador.isBlank()) {
+            return null;
+        }
         for (Usuario u : usuarios) {
-            if (u.getNombre().equalsIgnoreCase(nombre) || u.getId().equalsIgnoreCase(nombre)) {
+            if (u.getNombre().equalsIgnoreCase(identificador)
+                    || u.getId().equalsIgnoreCase(identificador)
+                    || u.getEmail().equalsIgnoreCase(identificador)) {
                 return u;
             }
         }
         return null;
+    }
+
+    public List<Usuario> getUsuarios() {
+        return usuarios;
     }
 
     public boolean agregarReseña(String tituloPublicacion, Reseña reseña) {
@@ -180,5 +191,18 @@ public class Biblioteca {
                 .mapToInt(Reseña::getCalificacion)
                 .average()
                 .orElse(0.0);
+    }
+
+    public String toJson() {
+        return "{" +
+                "\"usuarios\": [" +
+                usuarios.stream()
+                        .map(Usuario::toJson)
+                        .collect(Collectors.joining(",")) +
+                "],\"publicaciones\": [" +
+                publicaciones.stream()
+                        .map(Publicacion::toJson)
+                        .collect(Collectors.joining(",")) +
+                "]}";
     }
 }

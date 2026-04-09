@@ -22,10 +22,8 @@ public class BibliotecaUnitTest {
     @BeforeEach
     void setUp() {
         biblioteca = new Biblioteca();
-        comic = new Comic("Superman", "DC Comics", 1938, "123-456", "Comic",
-                "Joe Shuster", 1, "Superhéroes");
-        novela = new Novela("Cien años de soledad", "Gabriel García Márquez", 1967,
-                "789-012", "Novela", "Omnisciente", 400);
+        comic = new Comic("Superman", "DC Comics", 1938, "123-456", "Comic", 1, "Superhéroes");
+        novela = new Novela("Cien años de soledad", "Gabriel García Márquez", 1967, "789-012", "Novela", 400);
         libroTecnico = new LibroTecnico("Clean Code", "Robert Martin", 2008,
                 "345-678", "Libro Técnico", "Desarrollo de Software", "Intermedio");
         usuario = new Usuario("Juan Pérez", "jPerez", "juan@example.com");

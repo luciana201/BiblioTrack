@@ -2,26 +2,22 @@ package equipo.proyecto;
 
 public class Comic extends Publicacion {
 
-    private String ilustrador;
     private int volumen;
     private String demografia;
 
     public Comic(String titulo, String autor, int añoPublicacion,
-                 String isbn, String genero, String ilustrador,
-                 int volumen, String demografia) {
+                 String isbn, String genero,int volumen, String demografia) {
 
         super(titulo, autor, añoPublicacion, isbn, genero);
-        this.ilustrador = ilustrador;
         this.volumen = volumen;
         this.demografia = demografia;
     }
 
     public Comic(String id, String titulo, String autor, int añoPublicacion,
-                 String isbn, String genero, String ilustrador,
+                 String isbn, String genero,
                  int volumen, String demografia) {
 
         super(id, titulo, autor, añoPublicacion, isbn, genero);
-        this.ilustrador = ilustrador;
         this.volumen = volumen;
         this.demografia = demografia;
     }
@@ -33,21 +29,16 @@ public class Comic extends Publicacion {
 
     @Override
     public String getInfoDetallada() {
-        return "Ilustrador: " + ilustrador +
-               " | Volumen: " + volumen +
+        return "Volumen: " + volumen +
                " | Demografia: " + demografia;
     }
 
     @Override
     protected String getJsonExtra() {
-        return ",\"ilustrador\":\"" + escapeJson(ilustrador) +
-               "\",\"volumen\":" + volumen +
+        return "\",\"volumen\":" + volumen +
                ",\"demografia\":\"" + escapeJson(demografia) + "\"";
     }
 
-    public String getIlustrador() {
-        return ilustrador;
-    }
 
     public int getVolumen() {
         return volumen;
@@ -55,10 +46,6 @@ public class Comic extends Publicacion {
 
     public String getDemografia() {
         return demografia;
-    }
-
-    public void setIlustrador(String ilustrador) {
-        this.ilustrador = ilustrador;
     }
 
     public void setVolumen(int volumen) {

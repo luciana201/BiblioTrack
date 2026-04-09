@@ -44,6 +44,24 @@ public class Usuario {
         this.reseñas.add(reseña);
     }
 
+    public String toJson() {
+        return "{" +
+                "\"id\":\"" + escapeJson(id) + "\"," +
+                "\"nombre\":\"" + escapeJson(nombre) + "\"," +
+                "\"email\":\"" + escapeJson(email) + "\"" +
+                "}";
+    }
+
+    private String escapeJson(String value) {
+        if (value == null) {
+            return "";
+        }
+        return value.replace("\\", "\\\\")
+                .replace("\"", "\\\"")
+                .replace("\n", "\\n")
+                .replace("\r", "\\r");
+    }
+
     @Override
     public String toString() {
         return nombre + " <" + email + ">";
