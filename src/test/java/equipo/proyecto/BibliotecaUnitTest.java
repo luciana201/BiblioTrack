@@ -1,12 +1,15 @@
 package equipo.proyecto;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.DisplayName;
-
-import static org.junit.jupiter.api.Assertions.*;
-
 import java.util.ArrayList;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 
 @DisplayName("Tests unitarios para Biblioteca")
 public class BibliotecaUnitTest {
@@ -19,10 +22,8 @@ public class BibliotecaUnitTest {
     @BeforeEach
     void setUp() {
         biblioteca = new Biblioteca();
-        comic = new Comic("Superman", "DC Comics", 1938, "123-456", "Comic",
-                "Joe Shuster", 1, "Superhéroes");
-        novela = new Novela("Cien años de soledad", "Gabriel García Márquez", 1967,
-                "789-012", "Novela", "Omnisciente", 400);
+        comic = new Comic("Superman", "DC Comics", 1938, "123-456", "Comic", 1, "Superhéroes");
+        novela = new Novela("Cien años de soledad", "Gabriel García Márquez", 1967, "789-012", "Novela", 400);
         libroTecnico = new LibroTecnico("Clean Code", "Robert Martin", 2008,
                 "345-678", "Libro Técnico", "Desarrollo de Software", "Intermedio");
         usuario = new Usuario("Juan Pérez", "jPerez", "juan@example.com");
@@ -64,5 +65,17 @@ public class BibliotecaUnitTest {
         Publicacion mejor = biblioteca.getLibroMejorCalificado();
         assertNotNull(mejor);
         assertEquals(novela.getTitulo(), mejor.getTitulo());
+    }
+
+    @Test
+    @DisplayName("Búsqueda y agrupación con streams y expresiones regulares")
+    void testStreamsYRegex() {
+        biblioteca.agregarReseña(comic.getTitulo(), new Reseña("Ok", 8, usuario, comic));
+        biblioteca.agregarReseña(novela.getTitulo(), new Reseña("Obra", 10, usuario, novela));
+
+        assertFalse(biblioteca.buscarPorTituloRegex("Super").isEmpty());
+        assertEquals(1, biblioteca.buscarPorGeneroSecundario("Comic").size());
+        assertEquals(3, biblioteca.getPublicacionesAgrupadasPorGenero().size());
+        assertEquals(9.0, biblioteca.getPromedioCalificacionGeneral(), 0.1);
     }
 }

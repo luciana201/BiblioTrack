@@ -1,10 +1,9 @@
 package equipo.proyecto;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.DisplayName;
-
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
 
 @DisplayName("Tests unitarios para Comic")
 public class ComicTest {
@@ -12,8 +11,7 @@ public class ComicTest {
 
     @BeforeEach
     void setUp() {
-        comic = new Comic("Superman", "DC Comics", 1938, "123-456", "Comic",
-                "Joe Shuster", 1, "Superhéroes");
+        comic = new Comic("Superman", "DC Comics", 1938, "123-456", "Comic", 1, "Superhéroes");
     }
 
     @Test
@@ -24,7 +22,6 @@ public class ComicTest {
         assertEquals(1938, comic.getAñoPublicacion());
         assertEquals("123-456", comic.getIsbn());
         assertEquals("Comic", comic.getGenero());
-        assertEquals("Joe Shuster", comic.getIlustrador());
         assertEquals(1, comic.getVolumen());
         assertEquals("Superhéroes", comic.getDemografia());
     }

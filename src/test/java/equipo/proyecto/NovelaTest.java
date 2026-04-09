@@ -1,10 +1,9 @@
 package equipo.proyecto;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.DisplayName;
-
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
 
 @DisplayName("Tests unitarios para Novela")
 public class NovelaTest {
@@ -13,7 +12,7 @@ public class NovelaTest {
     @BeforeEach
     void setUp() {
         novela = new Novela("Cien años de soledad", "Gabriel García Márquez", 1967,
-                "789-012", "Novela", "Omnisciente", 400);
+                "789-012", "Novela", 400);
     }
 
     @Test
@@ -23,7 +22,6 @@ public class NovelaTest {
         assertEquals("Gabriel García Márquez", novela.getAutor());
         assertEquals(1967, novela.getAñoPublicacion());
         assertEquals("Novela", novela.getGenero());
-        assertEquals("Omnisciente", novela.getTipoNarrador());
         assertEquals(400, novela.getNumeroPaginas());
     }
 }
