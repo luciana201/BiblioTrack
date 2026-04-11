@@ -264,6 +264,7 @@ public class Main {
                 System.out.println("Valor inválido. Intenta de nuevo.");
             }
         } while (!patron.matcher(texto).matches());
+
         return Integer.parseInt(texto);
     }
 }

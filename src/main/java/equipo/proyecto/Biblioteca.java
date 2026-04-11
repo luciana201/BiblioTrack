@@ -10,7 +10,6 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class Biblioteca {
-    private String nombre;
     private ArrayList<Publicacion> publicaciones;
     private HashMap<String, List<Publicacion>> indiceSecundario;
     private ArrayList<Usuario> usuarios;
@@ -204,5 +203,10 @@ public class Biblioteca {
                         .map(Publicacion::toJson)
                         .collect(Collectors.joining(",")) +
                 "]}";
+                
+   
+    }
+    public List<Publicacion> getPublicacionesPorGenero(String genero) {
+    return filtrarPorGenero(genero);
     }
 }
