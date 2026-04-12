@@ -8,7 +8,7 @@ public class Main {
     private static final Pattern PATTERN_TEXTO = Pattern.compile("^[\\p{L}0-9 .,'-]{2,100}$");
     private static final Pattern PATTERN_ISBN = Pattern.compile("^\\d{3}-\\d{3}$");
     private static final Pattern PATTERN_EMAIL = Pattern.compile("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$");
-    private static final Pattern PATTERN_YEAR = Pattern.compile("^(19|20)\\d{2}$");
+    private static final Pattern PATTERN_YEAR = Pattern.compile("^(0\\d{3}|1\\d{3}|20[0-8]\\d|2090)$");
     private static final Pattern PATTERN_RATING = Pattern.compile("^([1-9]|10)$");
     private static final Pattern PATTERN_ID = Pattern.compile("^[a-zA-Z0-9_-]{1,20}$");
     private static final String RUTA_PUBLICACIONES_CSV = "data/biblioteca/biblioteca.csv";
@@ -94,7 +94,7 @@ public class Main {
         String titulo = leerTexto(scanner, "Título", PATTERN_TEXTO);
         String autor = leerTexto(scanner, "Autor", PATTERN_TEXTO);
         String isbn = leerTexto(scanner, "ISBN (XXX-XXX)", PATTERN_ISBN);
-        int año = Integer.parseInt(leerTexto(scanner, "Año de publicación (1900-2099)", PATTERN_YEAR));
+        int año = Integer.parseInt(leerTexto(scanner, "Año de publicación (0-2099)", PATTERN_YEAR));
         String genero = leerTexto(scanner, "Género", PATTERN_TEXTO);
 
         Publicacion publicacion;
@@ -264,6 +264,7 @@ public class Main {
                 System.out.println("Valor inválido. Intenta de nuevo.");
             }
         } while (!patron.matcher(texto).matches());
+
         return Integer.parseInt(texto);
     }
 }
