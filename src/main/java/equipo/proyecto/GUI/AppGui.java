@@ -10,6 +10,8 @@ public class AppGui {
             "data/usuarios/usuarios.csv",
             "data/biblioteca/biblioteca.json"
         );
+        
         new LoginDialog(null, biblioteca).setVisible(true);
+
     }
 }
