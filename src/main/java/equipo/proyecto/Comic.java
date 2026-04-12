@@ -5,25 +5,26 @@ public class Comic extends Publicacion {
     private int volumen;
     private String demografia;
 
-    public Comic(String titulo, String autor, int añoPublicacion,
+    public Comic(String titulo, String tipo, String autor, int añoPublicacion,
                  String isbn, String genero,int volumen, String demografia) {
 
-        super(titulo, autor, añoPublicacion, isbn, genero);
+        super(titulo, tipo, autor, añoPublicacion, isbn, genero);
         this.volumen = volumen;
         this.demografia = demografia;
     }
 
-    public Comic(String id, String titulo, String autor, int añoPublicacion,
+    public Comic(String id, String titulo, String tipo, String autor, int añoPublicacion,
                  String isbn, String genero,
                  int volumen, String demografia) {
 
-        super(id, titulo, autor, añoPublicacion, isbn, genero);
+        super(id, titulo, tipo, autor, añoPublicacion, isbn, genero);
         this.volumen = volumen;
         this.demografia = demografia;
     }
 
+    
     @Override
-    public String getGenero() {
+    public String getTipo() {
         return "Comic";
     }
 
@@ -35,7 +36,7 @@ public class Comic extends Publicacion {
 
     @Override
     protected String getJsonExtra() {
-        return "\",\"volumen\":" + volumen +
+        return ",\"volumen\":" + volumen + 
                ",\"demografia\":\"" + escapeJson(demografia) + "\"";
     }
 

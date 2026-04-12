@@ -11,7 +11,7 @@ public class NovelaTest {
 
     @BeforeEach
     void setUp() {
-        novela = new Novela("Cien años de soledad", "Gabriel García Márquez", 1967,
+        novela = new Novela("Cien años de soledad",  "Novela", "Gabriel García Márquez", 1967,
                 "789-012", "Novela", 400);
     }
 
