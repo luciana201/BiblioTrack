@@ -181,7 +181,8 @@ public class Biblioteca {
 
     public Map<String, List<Publicacion>> getPublicacionesAgrupadasPorGenero() {
         return publicaciones.stream()
-                .collect(Collectors.groupingBy(p -> p.getGenero() != null ? p.getGenero().toLowerCase() : "sin_genero"));
+                .collect(
+                        Collectors.groupingBy(p -> p.getGenero() != null ? p.getGenero().toLowerCase() : "sin_genero"));
     }
 
     public double getPromedioCalificacionGeneral() {
@@ -193,20 +194,51 @@ public class Biblioteca {
     }
 
     public String toJson() {
-        return "{" +
-                "\"usuarios\": [" +
-                usuarios.stream()
-                        .map(Usuario::toJson)
-                        .collect(Collectors.joining(",")) +
-                "],\"publicaciones\": [" +
-                publicaciones.stream()
-                        .map(Publicacion::toJson)
-                        .collect(Collectors.joining(",")) +
-                "]}";
-                
-   
+        StringBuilder sb = new StringBuilder();
+        sb.append("{\n");
+
+        // Usuarios
+        sb.append("  \"usuarios\": [\n");
+        List<Usuario> listaUsuarios = new ArrayList<>(usuarios);
+        for (int i = 0; i < listaUsuarios.size(); i++) {
+            String userJson = listaUsuarios.get(i).toJson();
+            // Indentar cada línea del objeto usuario
+            String indentado = "    " + userJson.replace("{", "{\n      ")
+                    .replace("}", "\n    }")
+                    .replace("\",\"", "\",\n      \"");
+            sb.append(indentado);
+            if (i < listaUsuarios.size() - 1)
+                sb.append(",");
+            sb.append("\n");
+        }
+        sb.append("  ],\n");
+
+        // Publicaciones
+        sb.append("  \"publicaciones\": [\n");
+        List<Publicacion> lista = new ArrayList<>(publicaciones);
+        for (int i = 0; i < lista.size(); i++) {
+            String pubJson = lista.get(i).toJson();
+            String indentado = "    " + pubJson
+                    .replace("{", "{\n      ")
+                    .replace("}", "\n    }")
+                    .replace("\",\"", "\",\n      \"")
+                    .replace("\",\"reseñas\":", "\",\n      \"reseñas\":")
+                    .replace("],", "],\n      ")
+                    .replace("[{", "[\n        {")
+                    .replace("},{", "},\n        {")
+                    .replace("}]", "}\n      ]");
+            sb.append(indentado);
+            if (i < lista.size() - 1)
+                sb.append(",");
+            sb.append("\n");
+        }
+        sb.append("  ]\n");
+
+        sb.append("}");
+        return sb.toString();
     }
+
     public List<Publicacion> getPublicacionesPorGenero(String genero) {
-    return filtrarPorGenero(genero);
+        return filtrarPorGenero(genero);
     }
 }

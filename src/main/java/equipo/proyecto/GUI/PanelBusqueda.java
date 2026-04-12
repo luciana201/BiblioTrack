@@ -18,7 +18,7 @@ public class PanelBusqueda extends JPanel {
     private DefaultTableModel modeloTabla;
     
     private static final String[] GENEROS = {
-        "Todos", "Thriller", "Romance", "Ficción", "Ciencia", "Letras", 
+        "Todos", "Thriller", "Romance", "Ficción", "Ciencia/Letras", 
         "Terror", "Clásicos", "Comic", "Manga"
     };
     

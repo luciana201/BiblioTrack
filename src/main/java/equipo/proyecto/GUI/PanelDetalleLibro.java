@@ -11,18 +11,18 @@ import java.util.stream.Collectors;
 public class PanelDetalleLibro extends JPanel {
 
     private Publicacion publicacion;
-    private Usuario     usuarioActual;
-    private Biblioteca  biblioteca;
-    private JLabel      labelEstado;
-    private MainFrame   mainFrame;
+    private Usuario usuarioActual;
+    private Biblioteca biblioteca;
+    private JLabel labelEstado;
+    private MainFrame mainFrame;
 
     public PanelDetalleLibro(Publicacion pub, Usuario usuario,
-                              Biblioteca bib, JLabel estado, MainFrame frame) {
-        this.publicacion  = pub;
+            Biblioteca bib, JLabel estado, MainFrame frame) {
+        this.publicacion = pub;
         this.usuarioActual = usuario;
-        this.biblioteca   = bib;
-        this.labelEstado  = estado;
-        this.mainFrame    = frame;
+        this.biblioteca = bib;
+        this.labelEstado = estado;
+        this.mainFrame = frame;
         setLayout(new BorderLayout(10, 10));
         setBorder(BorderFactory.createEmptyBorder(16, 16, 16, 16));
         initUI();
@@ -31,13 +31,13 @@ public class PanelDetalleLibro extends JPanel {
     private void initUI() {
         // ── NORTE: Botón volver + portada + datos ──
         JPanel topContainer = new JPanel(new BorderLayout(10, 10));
-        
+
         // Botón volver
         JButton btnVolver = new JButton("← Volver");
         btnVolver.setFocusPainted(false);
         btnVolver.addActionListener(e -> mainFrame.volverInicio());
         topContainer.add(btnVolver, BorderLayout.NORTH);
-        
+
         JPanel topPanel = new JPanel(new BorderLayout(14, 0));
 
         JPanel portada = new JPanel();
@@ -55,7 +55,7 @@ public class PanelDetalleLibro extends JPanel {
         lblAutor.setForeground(Color.GRAY);
 
         JLabel lblGenero = new JLabel("Género: " + publicacion.getGenero());
-        
+
         // Mostrar estado de lectura
         String estadoTexto = obtenerTextoEstado(publicacion.getEstado());
         JLabel lblEstadoLectura = new JLabel("Estado: " + estadoTexto);
@@ -63,8 +63,8 @@ public class PanelDetalleLibro extends JPanel {
 
         double media = calcularMedia();
         JLabel lblRating = new JLabel(media == 0
-            ? "Sin puntuaciones aún"
-            : String.format("%.1f/10  %s", media, estrellas(media)));
+                ? "Sin puntuaciones aún"
+                : String.format("%.1f/10  %s", media, estrellas(media)));
         lblRating.setForeground(new Color(0xE87722));
         lblRating.setFont(new Font("SansSerif", Font.BOLD, 13));
 
@@ -74,10 +74,15 @@ public class PanelDetalleLibro extends JPanel {
         infoPanel.add(Box.createVerticalStrut(3));
         infoPanel.add(lblGenero);
         infoPanel.add(Box.createVerticalStrut(3));
+        JLabel lblInfoEspecifica = new JLabel(publicacion.getInfoDetallada());
+        lblInfoEspecifica.setFont(new Font("SansSerif", Font.PLAIN, 12));
+        lblInfoEspecifica.setForeground(new Color(0x666666));
+        infoPanel.add(lblInfoEspecifica);
+        infoPanel.add(Box.createVerticalStrut(3));
         infoPanel.add(lblEstadoLectura);
         infoPanel.add(Box.createVerticalStrut(8));
         infoPanel.add(lblRating);
-        
+
         // Botón para cambiar estado
         JButton btnCambiarEstado = new JButton("Cambiar Estado");
         btnCambiarEstado.setBackground(new Color(0xE87722));
@@ -87,7 +92,7 @@ public class PanelDetalleLibro extends JPanel {
         btnCambiarEstado.addActionListener(e -> cambiarEstadoLectura(lblEstadoLectura));
         infoPanel.add(Box.createVerticalStrut(8));
         infoPanel.add(btnCambiarEstado);
-        
+
         topPanel.add(infoPanel, BorderLayout.CENTER);
         topContainer.add(topPanel, BorderLayout.CENTER);
         add(topContainer, BorderLayout.NORTH);
@@ -103,7 +108,7 @@ public class PanelDetalleLibro extends JPanel {
 
         JPanel formResena = new JPanel(new BorderLayout(6, 6));
         formResena.setBorder(BorderFactory.createTitledBorder(
-            "Tu reseña — " + usuarioActual.getNombre()));
+                "Tu reseña — " + usuarioActual.getNombre()));
 
         JSpinner spinnerCal = new JSpinner(new SpinnerNumberModel(8, 1, 10, 1));
         JTextArea txtComentario = new JTextArea(3, 20);
@@ -144,20 +149,20 @@ public class PanelDetalleLibro extends JPanel {
         add(new JScrollPane(centroPanel), BorderLayout.CENTER);
 
         // ── SUR: ranking del género ──
-        List<Publicacion> mismoGenero =
-            biblioteca.getPublicacionesPorGenero(publicacion.getGenero());
-        mismoGenero.sort((a, b) ->
-            Double.compare(calcularMediaDe(b), calcularMediaDe(a)));
+        List<Publicacion> mismoGenero = biblioteca.getPublicacionesPorGenero(publicacion.getGenero());
+        mismoGenero.sort((a, b) -> Double.compare(calcularMediaDe(b), calcularMediaDe(a)));
 
-        String[] cols = {"#", "Título", "Autor", "Media"};
+        String[] cols = { "#", "Título", "Autor", "Media" };
         DefaultTableModel modelo = new DefaultTableModel(cols, 0) {
-            public boolean isCellEditable(int r, int c) { return false; }
+            public boolean isCellEditable(int r, int c) {
+                return false;
+            }
         };
         int pos = 1;
         for (Publicacion p : mismoGenero) {
-            modelo.addRow(new Object[]{
-                pos++, p.getTitulo(), p.getAutor(),
-                String.format("%.1f", calcularMediaDe(p)) + "/10"
+            modelo.addRow(new Object[] {
+                    pos++, p.getTitulo(), p.getAutor(),
+                    String.format("%.1f", calcularMediaDe(p)) + "/10"
             });
         }
 
@@ -165,72 +170,79 @@ public class PanelDetalleLibro extends JPanel {
         tablaRanking.setRowHeight(24);
         JScrollPane scrollRanking = new JScrollPane(tablaRanking);
         scrollRanking.setBorder(BorderFactory.createTitledBorder(
-            "Ranking — " + publicacion.getGenero()));
+                "Ranking — " + publicacion.getGenero()));
         scrollRanking.setPreferredSize(new Dimension(0, 160));
         add(scrollRanking, BorderLayout.SOUTH);
     }
 
     private void cambiarEstadoLectura(JLabel lblEstadoLectura) {
-        String[] opciones = {"Sin Copia", "Sin Leer", "En Proceso", "Leído"};
+        String[] opciones = { "Sin Copia", "Sin Leer", "En Proceso", "Leído" };
         int estadoActual = publicacion.getEstado().ordinal();
-        
+
         String seleccion = (String) JOptionPane.showInputDialog(
-            this,
-            "Seleccione el nuevo estado de lectura:",
-            "Cambiar Estado",
-            JOptionPane.QUESTION_MESSAGE,
-            null,
-            opciones,
-            opciones[estadoActual]
-        );
-        
+                this,
+                "Seleccione el nuevo estado de lectura:",
+                "Cambiar Estado",
+                JOptionPane.QUESTION_MESSAGE,
+                null,
+                opciones,
+                opciones[estadoActual]);
+
         if (seleccion != null) {
             EstadoLectura nuevoEstado = null;
-            if ("Sin Leer".equals(seleccion)) nuevoEstado = EstadoLectura.PENDIENTE;
-            else if ("En Proceso".equals(seleccion)) nuevoEstado = EstadoLectura.LEYENDO;
-            else if ("Leído".equals(seleccion)) nuevoEstado = EstadoLectura.LEIDO;
-            
+            if ("Sin Leer".equals(seleccion))
+                nuevoEstado = EstadoLectura.PENDIENTE;
+            else if ("En Proceso".equals(seleccion))
+                nuevoEstado = EstadoLectura.LEYENDO;
+            else if ("Leído".equals(seleccion))
+                nuevoEstado = EstadoLectura.LEIDO;
+
             if (nuevoEstado != null) {
                 publicacion.setEstado(nuevoEstado);
                 lblEstadoLectura.setText("Estado: " + obtenerTextoEstado(nuevoEstado));
-                
+
                 // Guardar cambios
                 GestorArchivos.guardarDatos(biblioteca,
-                    "data/biblioteca/biblioteca.csv",
-                    "data/usuarios/usuarios.csv",
-                    "data/biblioteca/biblioteca.json");
-                
+                        "data/biblioteca/biblioteca.csv",
+                        "data/usuarios/usuarios.csv",
+                        "data/biblioteca/biblioteca.json");
+
                 labelEstado.setText(" Estado actualizado correctamente");
             }
         }
     }
 
     private String obtenerTextoEstado(EstadoLectura estado) {
-        if (estado == null) return "Sin Copia"; 
-        
+        if (estado == null)
+            return "Sin Copia";
+
         switch (estado) {
-            case PENDIENTE: return "Sin Leer";
-            case LEYENDO: return "En Proceso";
-            case LEIDO: return "Leído";
-            default: return "Sin Copia";
+            case PENDIENTE:
+                return "Sin Leer";
+            case LEYENDO:
+                return "En Proceso";
+            case LEIDO:
+                return "Leído";
+            default:
+                return "Sin Copia";
         }
     }
 
     private double calcularMedia() {
         return usuarioActual.getReseñas().stream()
-            .filter(r -> r.getPublicacion().getTitulo()
-                          .equals(publicacion.getTitulo()))
-            .mapToInt(Reseña::getCalificacion)
-            .average().orElse(0);
+                .filter(r -> r.getPublicacion().getTitulo()
+                        .equals(publicacion.getTitulo()))
+                .mapToInt(Reseña::getCalificacion)
+                .average().orElse(0);
     }
 
     private double calcularMediaDe(Publicacion pub) {
         return biblioteca.getUsuarios().stream()
-            .flatMap(u -> u.getReseñas().stream())
-            .filter(r -> r.getPublicacion().getTitulo()
-                          .equals(pub.getTitulo()))
-            .mapToInt(Reseña::getCalificacion)
-            .average().orElse(0);
+                .flatMap(u -> u.getReseñas().stream())
+                .filter(r -> r.getPublicacion().getTitulo()
+                        .equals(pub.getTitulo()))
+                .mapToInt(Reseña::getCalificacion)
+                .average().orElse(0);
     }
 
     private String estrellas(double media10) {
@@ -245,21 +257,21 @@ public class PanelDetalleLibro extends JPanel {
         panel.removeAll();
         DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         List<Reseña> todas = biblioteca.getUsuarios().stream()
-            .flatMap(u -> u.getReseñas().stream())
-            .filter(r -> r.getPublicacion().getTitulo()
-                          .equals(publicacion.getTitulo()))
-            .collect(Collectors.toList());
+                .flatMap(u -> u.getReseñas().stream())
+                .filter(r -> r.getPublicacion().getTitulo()
+                        .equals(publicacion.getTitulo()))
+                .collect(Collectors.toList());
 
         if (todas.isEmpty()) {
             panel.add(new JLabel("  Aún no hay reseñas."));
         }
         for (Reseña r : todas) {
             JLabel lbl = new JLabel("<html><b>"
-                + r.getUsuario().getNombre() + "</b> — "
-                + r.getCalificacion() + "/10 · "
-                + r.getFecha().format(fmt)
-                + "<br><i>" + r.getComentario()
-                + "</i></html>");
+                    + r.getUsuario().getNombre() + "</b> — "
+                    + r.getCalificacion() + "/10 · "
+                    + r.getFecha().format(fmt)
+                    + "<br><i>" + r.getComentario()
+                    + "</i></html>");
             lbl.setBorder(BorderFactory.createEmptyBorder(4, 6, 4, 6));
             panel.add(lbl);
             panel.add(new JSeparator());
