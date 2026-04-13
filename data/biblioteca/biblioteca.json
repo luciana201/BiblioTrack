@@ -1,1 +1,470 @@
-{"usuarios": [{"id":"dayday","nombre":"Dayana","email":"daya.ponceguibo@gmail.com"}],"publicaciones": [{"id":"1","tipo":"Novela","titulo":"Orgullo y prejuicio","autor":"Jane Austen","añoPublicacion":1813,"isbn":"123-123","genero":"Romance","estado":"PENDIENTE","reseñas":[{"usuario":"Dayana","comentario":"Obra maestra","calificacion":10}],"numeroPaginas":448}]}
+{
+  "usuarios": [
+    {
+      "id": "admin",
+      "nombre": "Admin",
+      "email": "admin@bibliotrack.com"
+    },
+    {
+      "id": "maria",
+      "nombre": "Maria",
+      "email": "maria@gmail.com"
+    },
+    {
+      "id": "carlos",
+      "nombre": "Carlos",
+      "email": "carlos@gmail.com"
+    }
+  ],
+  "publicaciones": [
+    {
+      "id": "1",
+      "tipo": "Novela",
+      "titulo": "Orgullo y Prejuicio",
+      "autor": "Jane Austen",
+      "añoPublicacion": 1813,
+      "isbn": "978-003",
+      "genero": "Clásicos",
+      "estado": "LEIDO",
+      "reseñas": [
+        {
+          "usuario": "Maria",
+          "comentario": "Una obra maestra de la literatura inglesa, los personajes son increíbles.",
+          "calificacion": 10
+        },
+        {
+          "usuario": "Carlos",
+          "comentario": "Muy buena, aunque algo lenta al principio.",
+          "calificacion": 8
+        }
+      ],
+      "numeroPaginas": 432
+    },
+    {
+      "id": "2",
+      "tipo": "Novela",
+      "titulo": "Cien años de soledad",
+      "autor": "Gabriel García Márquez",
+      "añoPublicacion": 1967,
+      "isbn": "978-004",
+      "genero": "Ficción",
+      "estado": "LEIDO",
+      "reseñas": [
+        {
+          "usuario": "Carlos",
+          "comentario": "El realismo mágico en su máxima expresión. Imprescindible.",
+          "calificacion": 10
+        },
+        {
+          "usuario": "Maria",
+          "comentario": "Compleja pero brillante, hay que leerla con calma.",
+          "calificacion": 9
+        }
+      ],
+      "numeroPaginas": 471
+    },
+    {
+      "id": "3",
+      "tipo": "Novela",
+      "titulo": "El nombre de la rosa",
+      "autor": "Umberto Eco",
+      "añoPublicacion": 1980,
+      "isbn": "978-005",
+      "genero": "Thriller",
+      "estado": "LEYENDO",
+      "reseñas": [
+        {
+          "usuario": "Carlos",
+          "comentario": "Intrigante y erudita, una joya del thriller histórico.",
+          "calificacion": 9
+        }
+      ],
+      "numeroPaginas": 502
+    },
+    {
+      "id": "4",
+      "tipo": "Novela",
+      "titulo": "La sombra del viento",
+      "autor": "Carlos Ruiz Zafón",
+      "añoPublicacion": 2001,
+      "isbn": "978-006",
+      "genero": "Thriller",
+      "estado": "LEIDO",
+      "reseñas": [
+        {
+          "usuario": "Maria",
+          "comentario": "Barcelona cobra vida en cada página. Una historia que engancha desde el principio.",
+          "calificacion": 9
+        }
+      ],
+      "numeroPaginas": 568
+    },
+    {
+      "id": "5",
+      "tipo": "Novela",
+      "titulo": "Drácula",
+      "autor": "Bram Stoker",
+      "añoPublicacion": 1897,
+      "isbn": "978-007",
+      "genero": "Terror",
+      "estado": "PENDIENTE",
+      "reseñas": [],
+      "numeroPaginas": 418
+    },
+    {
+      "id": "6",
+      "tipo": "Novela",
+      "titulo": "It",
+      "autor": "Stephen King",
+      "añoPublicacion": 1986,
+      "isbn": "978-008",
+      "genero": "Terror",
+      "estado": "LEYENDO",
+      "reseñas": [
+        {
+          "usuario": "Carlos",
+          "comentario": "Aterrador y largo pero imposible de soltar.",
+          "calificacion": 9
+        }
+      ],
+      "numeroPaginas": 1138
+    },
+    {
+      "id": "7",
+      "tipo": "Novela",
+      "titulo": "Yo antes de ti",
+      "autor": "Jojo Moyes",
+      "añoPublicacion": 2012,
+      "isbn": "978-009",
+      "genero": "Romance",
+      "estado": "LEIDO",
+      "reseñas": [
+        {
+          "usuario": "Maria",
+          "comentario": "Me hizo llorar sin parar. Una historia preciosa y muy emotiva.",
+          "calificacion": 9
+        }
+      ],
+      "numeroPaginas": 369
+    },
+    {
+      "id": "8",
+      "tipo": "Novela",
+      "titulo": "Outlander",
+      "autor": "Diana Gabaldon",
+      "añoPublicacion": 1991,
+      "isbn": "978-010",
+      "genero": "Romance",
+      "estado": "PENDIENTE",
+      "reseñas": [],
+      "numeroPaginas": 627
+    },
+    {
+      "id": "9",
+      "tipo": "Novela",
+      "titulo": "El alquimista",
+      "autor": "Paulo Coelho",
+      "añoPublicacion": 1988,
+      "isbn": "978-011",
+      "genero": "Ficción",
+      "estado": "LEIDO",
+      "reseñas": [
+        {
+          "usuario": "Maria",
+          "comentario": "Inspirador y filosófico, una lectura que deja huella.",
+          "calificacion": 8
+        },
+        {
+          "usuario": "Carlos",
+          "comentario": "Bonito pero algo simple para mi gusto.",
+          "calificacion": 7
+        }
+      ],
+      "numeroPaginas": 208
+    },
+    {
+      "id": "10",
+      "tipo": "Novela",
+      "titulo": "El código Da Vinci",
+      "autor": "Dan Brown",
+      "añoPublicacion": 2003,
+      "isbn": "978-012",
+      "genero": "Thriller",
+      "estado": "LEIDO",
+      "reseñas": [
+        {
+          "usuario": "Carlos",
+          "comentario": "Muy entretenido, no pude parar de leer hasta el final.",
+          "calificacion": 8
+        }
+      ],
+      "numeroPaginas": 454
+    },
+    {
+      "id": "11",
+      "tipo": "Comic",
+      "titulo": "Berserk",
+      "autor": "Kentaro Miura",
+      "añoPublicacion": 1989,
+      "isbn": "978-101",
+      "genero": "Manga",
+      "estado": "LEYENDO",
+      "reseñas": [
+        {
+          "usuario": "Carlos",
+          "comentario": "La obra maestra del manga oscuro. Arte y narrativa sin igual.",
+          "calificacion": 10
+        },
+        {
+          "usuario": "Maria",
+          "comentario": "Muy oscuro para mi gusto pero el dibujo es impresionante.",
+          "calificacion": 8
+        }
+      ],
+      "volumen": 1,
+      "demografia": "Seinen"
+    },
+    {
+      "id": "12",
+      "tipo": "Comic",
+      "titulo": "One Piece",
+      "autor": "Eiichiro Oda",
+      "añoPublicacion": 1997,
+      "isbn": "978-102",
+      "genero": "Manga",
+      "estado": "LEYENDO",
+      "reseñas": [
+        {
+          "usuario": "Carlos",
+          "comentario": "El mejor manga de aventuras de todos los tiempos, sin discusión.",
+          "calificacion": 10
+        }
+      ],
+      "volumen": 1,
+      "demografia": "Shonen"
+    },
+    {
+      "id": "13",
+      "tipo": "Comic",
+      "titulo": "Attack on Titan",
+      "autor": "Hajime Isayama",
+      "añoPublicacion": 2009,
+      "isbn": "978-103",
+      "genero": "Manga",
+      "estado": "LEIDO",
+      "reseñas": [
+        {
+          "usuario": "Maria",
+          "comentario": "Increíble historia con un final que genera mucho debate.",
+          "calificacion": 9
+        },
+        {
+          "usuario": "Carlos",
+          "comentario": "Los primeros arcos son perfectos, el final es divisivo pero valiente.",
+          "calificacion": 8
+        }
+      ],
+      "volumen": 1,
+      "demografia": "Shonen"
+    },
+    {
+      "id": "14",
+      "tipo": "Comic",
+      "titulo": "Vagabond",
+      "autor": "Takehiko Inoue",
+      "añoPublicacion": 1998,
+      "isbn": "978-104",
+      "genero": "Manga",
+      "estado": "PENDIENTE",
+      "reseñas": [
+        {
+          "usuario": "Carlos",
+          "comentario": "El dibujo es de otro nivel. Una joya absoluta.",
+          "calificacion": 10
+        }
+      ],
+      "volumen": 1,
+      "demografia": "Seinen"
+    },
+    {
+      "id": "15",
+      "tipo": "Comic",
+      "titulo": "Watchmen",
+      "autor": "Alan Moore",
+      "añoPublicacion": 1986,
+      "isbn": "978-105",
+      "genero": "Comic",
+      "estado": "LEIDO",
+      "reseñas": [
+        {
+          "usuario": "Maria",
+          "comentario": "Deconstruye el género de superhéroes de forma magistral.",
+          "calificacion": 10
+        }
+      ],
+      "volumen": 1,
+      "demografia": "Adulto"
+    },
+    {
+      "id": "16",
+      "tipo": "Comic",
+      "titulo": "Maus",
+      "autor": "Art Spiegelman",
+      "añoPublicacion": 1980,
+      "isbn": "978-106",
+      "genero": "Comic",
+      "estado": "LEIDO",
+      "reseñas": [
+        {
+          "usuario": "Maria",
+          "comentario": "Devastador y necesario. Un cómic que todo el mundo debería leer.",
+          "calificacion": 10
+        },
+        {
+          "usuario": "Carlos",
+          "comentario": "Una obra única que trasciende el formato del cómic.",
+          "calificacion": 9
+        }
+      ],
+      "volumen": 1,
+      "demografia": "Adulto"
+    },
+    {
+      "id": "17",
+      "tipo": "Comic",
+      "titulo": "Naruto",
+      "autor": "Masashi Kishimoto",
+      "añoPublicacion": 1999,
+      "isbn": "978-107",
+      "genero": "Manga",
+      "estado": "LEIDO",
+      "reseñas": [
+        {
+          "usuario": "Carlos",
+          "comentario": "Mi manga de la infancia, siempre tendrá un lugar especial.",
+          "calificacion": 8
+        }
+      ],
+      "volumen": 1,
+      "demografia": "Shonen"
+    },
+    {
+      "id": "18",
+      "tipo": "Comic",
+      "titulo": "Fullmetal Alchemist",
+      "autor": "Hiromu Arakawa",
+      "añoPublicacion": 2001,
+      "isbn": "978-108",
+      "genero": "Manga",
+      "estado": "LEIDO",
+      "reseñas": [
+        {
+          "usuario": "Maria",
+          "comentario": "Historia perfectamente construida de principio a fin.",
+          "calificacion": 10
+        },
+        {
+          "usuario": "Carlos",
+          "comentario": "Uno de los mejores mangas jamás escritos. El final es redondo.",
+          "calificacion": 10
+        }
+      ],
+      "volumen": 1,
+      "demografia": "Shonen"
+    },
+    {
+      "id": "19",
+      "tipo": "LibroTecnico",
+      "titulo": "Clean Code",
+      "autor": "Robert C. Martin",
+      "añoPublicacion": 2008,
+      "isbn": "978-201",
+      "genero": "Ciencia/Letras",
+      "estado": "LEIDO",
+      "reseñas": [
+        {
+          "usuario": "Carlos",
+          "comentario": "Lectura obligatoria para cualquier programador serio.",
+          "calificacion": 9
+        }
+      ],
+      "tema": "Programación",
+      "nivel": "Intermedio"
+    },
+    {
+      "id": "20",
+      "tipo": "LibroTecnico",
+      "titulo": "El arte de la guerra",
+      "autor": "Sun Tzu",
+      "añoPublicacion": 500,
+      "isbn": "978-202",
+      "genero": "Ciencia/Letras",
+      "estado": "LEIDO",
+      "reseñas": [
+        {
+          "usuario": "Maria",
+          "comentario": "Atemporal y aplicable a muchos ámbitos de la vida.",
+          "calificacion": 8
+        }
+      ],
+      "tema": "Estrategia",
+      "nivel": "Básico"
+    },
+    {
+      "id": "21",
+      "tipo": "LibroTecnico",
+      "titulo": "Sapiens",
+      "autor": "Yuval Noah Harari",
+      "añoPublicacion": 2011,
+      "isbn": "978-203",
+      "genero": "Ciencia/Letras",
+      "estado": "LEIDO",
+      "reseñas": [
+        {
+          "usuario": "Carlos",
+          "comentario": "Cambia la forma en que ves la historia de la humanidad.",
+          "calificacion": 9
+        },
+        {
+          "usuario": "Maria",
+          "comentario": "Fascinante aunque algunas teorías son muy discutibles.",
+          "calificacion": 8
+        }
+      ],
+      "tema": "Historia y Antropología",
+      "nivel": "Básico"
+    },
+    {
+      "id": "22",
+      "tipo": "LibroTecnico",
+      "titulo": "Design Patterns",
+      "autor": "Gang of Four",
+      "añoPublicacion": 1994,
+      "isbn": "978-204",
+      "genero": "Ciencia/Letras",
+      "estado": "LEYENDO",
+      "reseñas": [
+        {
+          "usuario": "Carlos",
+          "comentario": "El libro de referencia de los patrones de diseño. Denso pero esencial.",
+          "calificacion": 9
+        }
+      ],
+      "tema": "Arquitectura de Software",
+      "nivel": "Avanzado"
+    },
+    {
+      "id": "23",
+      "tipo": "LibroTecnico",
+      "titulo": "El universo en una cáscara de nuez",
+      "autor": "Stephen Hawking",
+      "añoPublicacion": 2001,
+      "isbn": "978-205",
+      "genero": "Ciencia/Letras",
+      "estado": "PENDIENTE",
+      "reseñas": [],
+      "tema": "Física y Cosmología",
+      "nivel": "Intermedio"
+    }
+  ]
+}

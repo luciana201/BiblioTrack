@@ -14,7 +14,7 @@ public class ReseñaTest {
     @BeforeEach
     void setUp() {
         usuario = new Usuario("Juan Pérez", "jPerez", "juan@example.com");
-        comic = new Comic("Superman", "DC Comics", 1938, "123-456", "Comic", 1, "Superhéroes");
+        comic = new Comic("Superman",  "Comic", "DC Comics", 1938, "123-456", "Comic", 1, "Superhéroes");
     }
 
     @Test

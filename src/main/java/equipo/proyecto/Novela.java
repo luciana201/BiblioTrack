@@ -4,28 +4,26 @@ public class Novela extends Publicacion {
 
     private int numeroPaginas;
 
-    public Novela(String titulo, String autor, int añoPublicacion,
-                  String isbn, String genero,
-                  int numeroPaginas) {
-
-        super(titulo, autor, añoPublicacion, isbn, genero);
+    public Novela(String titulo, String tipo, String autor, int añoPublicacion, String isbn, String genero,
+                  int numeroPaginas) { 
+        super(titulo, tipo, autor, añoPublicacion, isbn, genero);
         this.numeroPaginas = numeroPaginas;
     }
 
-    public Novela(String id, String titulo, String autor, int añoPublicacion,
+    public Novela(String id, String titulo, String tipo, String autor, int añoPublicacion,
                   String isbn, String genero, int numeroPaginas) {
-        super(id, titulo, autor, añoPublicacion, isbn, genero);
+        super(id, titulo, tipo, autor, añoPublicacion, isbn, genero);
         this.numeroPaginas = numeroPaginas;
-    }
-
-    @Override
-    public String getGenero() {
-        return "Novela";
     }
 
     @Override
     public String getInfoDetallada() {
         return "Paginas: " + numeroPaginas;
+    }
+
+    @Override
+    public String getTipo() {
+        return "Novela";
     }
 
     @Override

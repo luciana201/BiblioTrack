@@ -12,7 +12,7 @@ public class LibroTecnicoTest {
 
     @BeforeEach
     void setUp() {
-        libro = new LibroTecnico("Clean Code", "Robert Martin", 2008,
+        libro = new LibroTecnico("Clean Code",  "Libro Técnico", "Robert Martin", 2008,
                 "345-678", "Libro Técnico", "Desarrollo de Software", "Intermedio");
     }
 

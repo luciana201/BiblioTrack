@@ -247,14 +247,14 @@ public class GestorArchivos {
         if ("Comic".equalsIgnoreCase(tipo)) {
             int volumen = getJsonInt(json, "volumen", 0);
             String demografia = getJsonString(json, "demografia");
-            p = new Comic(id, titulo, autor, año, isbn, genero, volumen, demografia);
+            p = new Comic(id, tipo, titulo, autor, año, isbn, genero, volumen, demografia);
         } else if ("Novela".equalsIgnoreCase(tipo)) {
             int paginas = getJsonInt(json, "numeroPaginas", 0);
-            p = new Novela(id, titulo, autor, año, isbn, genero, paginas);
+            p = new Novela(id, tipo, titulo, autor, año, isbn, genero, paginas);
         } else if ("LibroTecnico".equalsIgnoreCase(tipo) || "Libro Técnico".equalsIgnoreCase(tipo)) {
             String tema = getJsonString(json, "tema");
             String nivel = getJsonString(json, "nivel");
-            p = new LibroTecnico(id, titulo, autor, año, isbn, genero, tema, nivel);
+            p = new LibroTecnico(id, tipo, titulo, autor, año, isbn, genero, tema, nivel);
         }
         if (p != null && estadoValor != null) {
             try {
@@ -314,16 +314,16 @@ public class GestorArchivos {
             Publicacion p = null;
             
             if ("COMIC".equals(tipo) && datos.length >= 11) {
-                int volumen = Integer.parseInt(datos[9]);
-                String demografia = datos[10];
-                p = new Comic(id, titulo, autor, año, isbn, genero, volumen, demografia);
+                int volumen = Integer.parseInt(datos[8]); 
+                String demografia = datos[9];
+                p = new Comic(id, tipo, titulo, autor, año, isbn, genero, volumen, demografia);
             } else if ("NOVELA".equals(tipo) && datos.length >= 10) {
-                int numeroPaginas = Integer.parseInt(datos[9]);
-                p = new Novela(id, titulo, autor, año, isbn, genero, numeroPaginas);
+                int numeroPaginas = Integer.parseInt(datos[8]);
+                p = new Novela(id, tipo, titulo, autor, año, isbn, genero, numeroPaginas);
             } else if ("LIBROTECNICO".equals(tipo) && datos.length >= 10) {
                 String tema = datos[8];
                 String nivel = datos[9];
-                p = new LibroTecnico(id, titulo, autor, año, isbn, genero, tema, nivel);
+                p = new LibroTecnico(id, tipo, titulo, autor, año, isbn, genero, tema, nivel);
             } else {
                 System.out.println("Tipo de publicación desconocido o datos incompletos: " + tipo);
             }

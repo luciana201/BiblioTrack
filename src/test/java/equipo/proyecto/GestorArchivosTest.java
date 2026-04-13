@@ -16,9 +16,9 @@ public class GestorArchivosTest {
     @BeforeEach
     void setUp() {
         biblioteca = new Biblioteca();
-        comic = new Comic("Superman", "DC Comics", 1938, "123-456", "Comic", 1, "Superhéroes");
-        novela = new Novela("Cien años de soledad", "Gabriel García Márquez", 1967,"789-012", "Novela", 400);
-        libroTecnico = new LibroTecnico("Clean Code", "Robert Martin", 2008,
+        comic = new Comic("Superman",  "Comic", "DC Comics", 1938, "123-456", "Comic", 1, "Superhéroes");
+        novela = new Novela("Cien años de soledad", "Novela", "Gabriel García Márquez", 1967,"789-012", "Novela", 400);
+        libroTecnico = new LibroTecnico("Clean Code", "Libro Técnico", "Robert Martin", 2008,
                 "345-678", "Libro Técnico", "Desarrollo de Software", "Intermedio");
 
         biblioteca.agregarPublicacion(comic);

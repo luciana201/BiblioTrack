@@ -101,14 +101,14 @@ public class Main {
         if (tipo.equalsIgnoreCase("COMIC")) {
             int volumen = Integer.parseInt(leerTexto(scanner, "Volumen", Pattern.compile("^[1-9]\\d*$")));
             String demografia = leerTexto(scanner, "Demografía", PATTERN_TEXTO);
-            publicacion = new Comic(titulo, autor, año, isbn, genero, volumen, demografia);
+            publicacion = new Comic(titulo, tipo, autor, año, isbn, genero, volumen, demografia);
         } else if (tipo.equalsIgnoreCase("NOVELA")) {
             int paginas = Integer.parseInt(leerTexto(scanner, "Número de páginas", Pattern.compile("^[1-9]\\d*$")));
-            publicacion = new Novela( titulo, autor, año, isbn, genero, paginas);
+            publicacion = new Novela( titulo,  tipo, autor, año, isbn, genero, paginas);
         } else {
             String tema = leerTexto(scanner, "Tema", PATTERN_TEXTO);
             String nivel = leerTexto(scanner, "Nivel", PATTERN_TEXTO);
-            publicacion = new LibroTecnico(titulo, autor, año, isbn, genero, tema, nivel);
+            publicacion = new LibroTecnico(titulo, tipo, autor, año, isbn, genero, tema, nivel);
         }
 
         biblioteca.agregarPublicacion(publicacion);

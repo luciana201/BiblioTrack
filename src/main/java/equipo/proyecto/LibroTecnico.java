@@ -5,22 +5,22 @@ public class LibroTecnico extends Publicacion {
     private String tema;
     private String nivel;
 
-    public LibroTecnico(String titulo, String autor, int añoPublicacion, 
+    public LibroTecnico(String titulo, String tipo, String autor, int añoPublicacion, 
                         String isbn, String genero, String tema, String nivel) {
-        super(titulo, autor, añoPublicacion, isbn, genero);
+        super(titulo, tipo, autor, añoPublicacion, isbn, genero);
         this.tema = tema;
         this.nivel = nivel;
     }
 
-    public LibroTecnico(String id, String titulo, String autor, int añoPublicacion, 
+    public LibroTecnico(String id,  String titulo, String tipo, String autor, int añoPublicacion, 
                         String isbn, String genero, String tema, String nivel) {
-        super(id, titulo, autor, añoPublicacion, isbn, genero);
+        super(id, titulo, tipo, autor, añoPublicacion, isbn, genero);
         this.tema = tema;
         this.nivel = nivel;
     }
 
     @Override
-    public String getGenero() {
+    public String getTipo() {
         return "Libro Técnico";
     }
 

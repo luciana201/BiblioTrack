@@ -8,6 +8,7 @@ public abstract class Publicacion {
 
     private static int siguienteId = 1;
     private final String id;
+    private String tipo;
     private String titulo;
     private String autor;
     private int añoPublicacion;
@@ -16,8 +17,9 @@ public abstract class Publicacion {
     private EstadoLectura estado;
     private List<Reseña> reseñas;
 
-    protected Publicacion(String id, String titulo, String autor, int añoPublicacion, String isbn, String genero) {
+    protected Publicacion(String id, String tipo, String titulo, String autor, int añoPublicacion, String isbn, String genero) {
         this.id = id;
+        this.tipo = tipo;
         this.titulo = titulo;
         this.autor = autor;
         this.añoPublicacion = añoPublicacion;
@@ -30,8 +32,8 @@ public abstract class Publicacion {
         }
     }
 
-    public Publicacion(String titulo, String autor, int añoPublicacion, String isbn, String genero) {
-        this(String.valueOf(siguienteId++), titulo, autor, añoPublicacion, isbn, genero);
+    public Publicacion(String titulo, String tipo, String autor, int añoPublicacion, String isbn, String genero) {
+        this(String.valueOf(siguienteId++), tipo, titulo, autor, añoPublicacion, isbn, genero);
     }
 
     private void actualizarSiguienteId(String id) {
@@ -60,12 +62,22 @@ public abstract class Publicacion {
         return autor;
     }
 
+
     public int getAñoPublicacion() {
         return añoPublicacion;
     }
 
     public String getIsbn() {
         return isbn;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    
+    public void setGenero(String genero) {
+        this.genero = genero;
     }
 
     public String getGenero() {
@@ -87,7 +99,7 @@ public abstract class Publicacion {
     public String toJson() {
         return "{" +
                 "\"id\":\"" + escapeJson(id) + "\"," +
-                "\"tipo\":\"" + escapeJson(getClass().getSimpleName()) + "\"," +
+                "\"tipo\":\"" + escapeJson(tipo) + "\"," +
                 "\"titulo\":\"" + escapeJson(titulo) + "\"," +
                 "\"autor\":\"" + escapeJson(autor) + "\"," +
                 "\"añoPublicacion\":" + añoPublicacion + "," +
