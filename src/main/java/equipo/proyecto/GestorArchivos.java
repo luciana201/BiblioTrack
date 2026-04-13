@@ -172,23 +172,16 @@ public class GestorArchivos {
     private static String getJsonArray(String json, String key) {
         Pattern pattern = Pattern.compile("\\\"" + key + "\\\"\\s*:\\s*");
         Matcher matcher = pattern.matcher(json);
-        if (!matcher.find()) {
-            return null;
-        }
+        if (!matcher.find()) return null;
         int start = json.indexOf('[', matcher.end());
-        if (start < 0) {
-            return null;
-        }
+        if (start < 0) return null;
         int depth = 0;
         for (int i = start; i < json.length(); i++) {
             char c = json.charAt(i);
-            if (c == '[') {
-                depth++;
-            } else if (c == ']') {
+            if (c == '[') depth++;
+            else if (c == ']') {
                 depth--;
-                if (depth == 0) {
-                    return json.substring(start + 1, i);
-                }
+                if (depth == 0) return json.substring(start + 1, i);
             }
         }
         return null;
@@ -201,9 +194,7 @@ public class GestorArchivos {
         for (int i = 0; i < arrayContent.length(); i++) {
             char c = arrayContent.charAt(i);
             if (c == '{') {
-                if (depth == 0) {
-                    start = i;
-                }
+                if (depth == 0) start = i;
                 depth++;
             } else if (c == '}') {
                 depth--;
@@ -243,24 +234,30 @@ public class GestorArchivos {
         String isbn = getJsonString(json, "isbn");
         String genero = getJsonString(json, "genero");
         String estadoValor = getJsonString(json, "estado");
+
         Publicacion p = null;
+
+        // Publicacion(id, tipo, titulo, ...) — orden del constructor de Publicacion
         if ("Comic".equalsIgnoreCase(tipo)) {
             int volumen = getJsonInt(json, "volumen", 0);
             String demografia = getJsonString(json, "demografia");
             p = new Comic(id, tipo, titulo, autor, año, isbn, genero, volumen, demografia);
+
         } else if ("Novela".equalsIgnoreCase(tipo)) {
             int paginas = getJsonInt(json, "numeroPaginas", 0);
             p = new Novela(id, tipo, titulo, autor, año, isbn, genero, paginas);
-        } else if ("LibroTecnico".equalsIgnoreCase(tipo) || "Libro Técnico".equalsIgnoreCase(tipo)) {
+
+        } else if ("Libro Técnico".equalsIgnoreCase(tipo) || "LibroTecnico".equalsIgnoreCase(tipo)) {
             String tema = getJsonString(json, "tema");
             String nivel = getJsonString(json, "nivel");
             p = new LibroTecnico(id, tipo, titulo, autor, año, isbn, genero, tema, nivel);
         }
+
         if (p != null && estadoValor != null) {
             try {
                 p.setEstado(EstadoLectura.valueOf(estadoValor));
-            } catch (IllegalArgumentException ignored) {
-            }
+            } catch (IllegalArgumentException ignored) {}
+
             String reseñasJson = getJsonArray(json, "reseñas");
             if (reseñasJson != null) {
                 for (String reseñaJson : splitJsonArrayObjects(reseñasJson)) {
@@ -269,7 +266,8 @@ public class GestorArchivos {
                     int calificacion = getJsonInt(reseñaJson, "calificacion", 0);
                     Usuario usuario = biblioteca.buscarUsuario(usuarioNombre);
                     if (usuario == null) {
-                        usuario = new Usuario(usuarioNombre, usuarioNombre.replaceAll("\\s+", "").toLowerCase(), "");
+                        usuario = new Usuario(usuarioNombre,
+                            usuarioNombre.replaceAll("\\s+", "").toLowerCase(), "");
                         biblioteca.agregarUsuario(usuario);
                     }
                     Reseña reseña = new Reseña(comentario, calificacion, usuario, p);
@@ -300,7 +298,7 @@ public class GestorArchivos {
         try {
             String[] datos = linea.split(";");
             if (datos.length < 8) {
-                System.out.println("Linea inválida (datos insuficientes): " + linea);
+                System.out.println("Linea inválida: " + linea);
                 return null;
             }
             String tipo = datos[0];
@@ -312,12 +310,12 @@ public class GestorArchivos {
             String genero = datos[6];
             EstadoLectura estado = EstadoLectura.valueOf(datos[7]);
             Publicacion p = null;
-            
-            if ("COMIC".equals(tipo) && datos.length >= 11) {
-                int volumen = Integer.parseInt(datos[8]); 
+
+            if ("COMIC".equals(tipo) && datos.length >= 10) {
+                int volumen = Integer.parseInt(datos[8]);
                 String demografia = datos[9];
                 p = new Comic(id, tipo, titulo, autor, año, isbn, genero, volumen, demografia);
-            } else if ("NOVELA".equals(tipo) && datos.length >= 10) {
+            } else if ("NOVELA".equals(tipo) && datos.length >= 9) {
                 int numeroPaginas = Integer.parseInt(datos[8]);
                 p = new Novela(id, tipo, titulo, autor, año, isbn, genero, numeroPaginas);
             } else if ("LIBROTECNICO".equals(tipo) && datos.length >= 10) {
@@ -325,17 +323,17 @@ public class GestorArchivos {
                 String nivel = datos[9];
                 p = new LibroTecnico(id, tipo, titulo, autor, año, isbn, genero, tema, nivel);
             } else {
-                System.out.println("Tipo de publicación desconocido o datos incompletos: " + tipo);
+                System.out.println("Tipo desconocido: " + tipo);
             }
-            if (p != null) {
-                p.setEstado(estado);
-            }
+
+            if (p != null) p.setEstado(estado);
             return p;
+
         } catch (NumberFormatException e) {
-            System.out.println("Error al parsear datos numéricos: " + linea + " - " + e.getMessage());
+            System.out.println("Error numérico: " + linea + " - " + e.getMessage());
             return null;
         } catch (IllegalArgumentException e) {
-            System.out.println("Estado de lectura inválido: " + linea + " - " + e.getMessage());
+            System.out.println("Estado inválido: " + linea + " - " + e.getMessage());
             return null;
         }
     }
