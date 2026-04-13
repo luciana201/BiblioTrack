@@ -263,10 +263,7 @@ public class DialogoAgregarPublicacion extends JDialog {
                 biblioteca.agregarPublicacion(publicacion);
                 
                 // Guardar cambios
-                GestorArchivos.guardarDatos(biblioteca, 
-                    "data/biblioteca/biblioteca.csv",
-                    "data/usuarios/usuarios.csv", 
-                    "data/biblioteca/biblioteca.json");
+                GestorArchivos.guardarDatos(biblioteca, AppGui.RUTA_CSV, AppGui.RUTA_USUARIOS, AppGui.RUTA_JSON);
                 
                 guardado = true;
                 JOptionPane.showMessageDialog(this, 

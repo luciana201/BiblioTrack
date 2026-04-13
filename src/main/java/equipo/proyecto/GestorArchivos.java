@@ -5,7 +5,6 @@ import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.RandomAccessFile;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -18,50 +17,26 @@ public class GestorArchivos {
     public static void guardarBiblioteca(Biblioteca biblioteca, String ruta) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(ruta))) {
             for (Publicacion p : biblioteca.getLibros()) {
+                String base = p.getId() + ";" + p.getTitulo() + ";" + p.getAutor() + ";" +
+                        p.getAñoPublicacion() + ";" + p.getIsbn() + ";" +
+                        p.getGenero() + ";" + p.getEstado();
+
                 if (p instanceof Comic) {
-                    Comic comic = (Comic) p;
-                    writer.write("COMIC;" +
-                            p.getId() + ";" +
-                            p.getTitulo() + ";" +
-                            p.getAutor() + ";" +
-                            p.getAñoPublicacion() + ";" +
-                            p.getIsbn() + ";" +
-                            p.getGenero() + ";" +
-                            p.getEstado() + ";" +
-                            comic.getVolumen() + ";" +
-                            comic.getDemografia());
+                    Comic c = (Comic) p;
+                    writer.write("COMIC;" + base + ";" + c.getVolumen() + ";" + c.getDemografia());
                 } else if (p instanceof Novela) {
-                    Novela novela = (Novela) p;
-                    writer.write("NOVELA;" +
-                            p.getId() + ";" +
-                            p.getTitulo() + ";" +
-                            p.getAutor() + ";" +
-                            p.getAñoPublicacion() + ";" +
-                            p.getIsbn() + ";" +
-                            p.getGenero() + ";" +
-                            p.getEstado() + ";" +
-                            novela.getNumeroPaginas());
+                    Novela n = (Novela) p;
+                    writer.write("NOVELA;" + base + ";" + n.getNumeroPaginas());
                 } else if (p instanceof LibroTecnico) {
-                    LibroTecnico libro = (LibroTecnico) p;
-                    writer.write("LIBROTECNICO;" +
-                            p.getId() + ";" +
-                            p.getTitulo() + ";" +
-                            p.getAutor() + ";" +
-                            p.getAñoPublicacion() + ";" +
-                            p.getIsbn() + ";" +
-                            p.getGenero() + ";" +
-                            p.getEstado() + ";" +
-                            libro.getTema() + ";" +
-                            libro.getNivel());
+                    LibroTecnico l = (LibroTecnico) p;
+                    writer.write("LIBROTECNICO;" + base + ";" + l.getTema() + ";" + l.getNivel());
                 }
                 writer.newLine();
             }
-            System.out.println("Biblioteca guardada correctamente");
         } catch (IOException e) {
             System.out.println("Error al guardar: " + e.getMessage());
         }
     }
-
     public static Biblioteca cargarBiblioteca(String ruta) {
         Biblioteca biblioteca = new Biblioteca();
         try (BufferedReader reader = new BufferedReader(new FileReader(ruta))) {
@@ -111,25 +86,15 @@ public class GestorArchivos {
     }
 
     public static Biblioteca cargarDatos(String rutaPublicaciones, String rutaUsuarios, String rutaJson) {
-        Biblioteca biblioteca = new Biblioteca();
         if (Files.exists(Paths.get(rutaJson))) {
-            Biblioteca cargada = cargarBibliotecaJson(rutaJson);
-            for (Usuario u : cargada.getUsuarios()) {
-                biblioteca.agregarUsuario(u);
-            }
-            for (Publicacion p : cargada.getLibros()) {
-                biblioteca.agregarPublicacion(p);
-            }
-            return biblioteca;
+            return cargarBibliotecaJson(rutaJson); // ya devuelve una biblioteca completa
         }
+        Biblioteca biblioteca = new Biblioteca();
         cargarUsuariosCsv(biblioteca, rutaUsuarios);
-        Biblioteca publicaciones = cargarBiblioteca(rutaPublicaciones);
-        for (Publicacion p : publicaciones.getLibros()) {
-            biblioteca.agregarPublicacion(p);
-        }
+        cargarBiblioteca(rutaPublicaciones).getLibros()
+                .forEach(biblioteca::agregarPublicacion);
         return biblioteca;
     }
-
     public static void guardarBibliotecaJson(Biblioteca biblioteca, String ruta) {
         try (BufferedWriter writer = Files.newBufferedWriter(Paths.get(ruta), StandardCharsets.UTF_8)) {
             writer.write(biblioteca.toJson());
@@ -280,9 +245,9 @@ public class GestorArchivos {
     }
 
     public static Publicacion buscarPorId(String ruta, String idBuscado) {
-        try (RandomAccessFile raf = new RandomAccessFile(ruta, "r")) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(ruta))) {
             String linea;
-            while ((linea = raf.readLine()) != null) {
+            while ((linea = reader.readLine()) != null) {
                 String[] datos = linea.split(";");
                 if (datos.length > 1 && datos[1].equals(idBuscado)) {
                     return parsePublicacion(linea);
