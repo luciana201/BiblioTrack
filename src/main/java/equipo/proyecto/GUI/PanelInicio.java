@@ -3,7 +3,6 @@ package equipo.proyecto.GUI;
 import equipo.proyecto.*;
 import javax.swing.*;
 import java.awt.*;
-import java.util.*;
 import java.util.List;
 
 public class PanelInicio extends JPanel {
@@ -30,13 +29,13 @@ public class PanelInicio extends JPanel {
         JPanel contentPanel = new JPanel();
         contentPanel.setLayout(new BoxLayout(contentPanel, BoxLayout.Y_AXIS));
 
-        contentPanel.add(crearSeccion("RECOMENDACIONES SEMANALES", obtenerMejorCalificadas(6)));
+        contentPanel.add(crearSeccion("RECOMENDACIONES SEMANALES", biblioteca.getLibroMejorCalificados(6)));
         contentPanel.add(Box.createVerticalStrut(20));
-        contentPanel.add(crearSeccion("NOVELAS", filtrarPorTipo("Novela", 10)));
+        contentPanel.add(crearSeccion("NOVELAS", biblioteca.filtrarPorTipo("Novela", 10)));
         contentPanel.add(Box.createVerticalStrut(20));
-        contentPanel.add(crearSeccion("COMICS", filtrarPorTipo("Comic", 10)));
+        contentPanel.add(crearSeccion("COMICS", biblioteca.filtrarPorTipo("Comic", 10)));
         contentPanel.add(Box.createVerticalStrut(20));
-        contentPanel.add(crearSeccion("LIBROS TÉCNICOS", filtrarPorTipo("Libro Técnico", 15)));
+        contentPanel.add(crearSeccion("LIBROS TÉCNICOS", biblioteca.filtrarPorTipo("Libro Técnico", 15)));
 
         JScrollPane scroll = new JScrollPane(contentPanel);
         scroll.getVerticalScrollBar().setUnitIncrement(16);
@@ -152,43 +151,4 @@ public class PanelInicio extends JPanel {
         return null;
     }
 
-    private List<Publicacion> filtrarPorTipo(String tipo, int limite) {
-        return biblioteca.getLibros().stream()
-            .filter(p -> {
-                String t = p.getTipo().toLowerCase()
-                             .replace("é", "e")
-                             .replace("í", "i")
-                             .replace("ó", "o")
-                             .replace("á", "a")
-                             .replace("ú", "u")
-                             .replace(" ", "");
-                String tipoBuscado = tipo.toLowerCase()
-                             .replace("é", "e")
-                             .replace("í", "i")
-                             .replace("ó", "o")
-                             .replace("á", "a")
-                             .replace("ú", "u")
-                             .replace(" ", "");
-                return t.equals(tipoBuscado);
-            })
-            .limit(limite)
-            .collect(java.util.stream.Collectors.toList());
-    }
-
-    private List<Publicacion> obtenerMejorCalificadas(int limite) {
-        List<Publicacion> todas = new ArrayList<>(biblioteca.getLibros());
-        todas.sort((a, b) -> Double.compare(
-            calcularMediaDe(b), calcularMediaDe(a)));
-        return todas.stream().limit(limite)
-            .collect(java.util.stream.Collectors.toList());
-    }
-
-    private double calcularMediaDe(Publicacion pub) {
-        return biblioteca.getUsuarios().stream()
-            .flatMap(u -> u.getReseñas().stream())
-            .filter(r -> r.getPublicacion().getTitulo()
-                .equals(pub.getTitulo()))
-            .mapToInt(Reseña::getCalificacion)
-            .average().orElse(0);
-    }
 }

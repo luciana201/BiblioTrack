@@ -1,13 +1,13 @@
-NOVELA;1;Orgullo y Prejuicio;Jane Austen;1813;978-003;ClÃ¡sicos;LEIDO;432
-NOVELA;2;Cien aÃ±os de soledad;Gabriel GarcÃ­a MÃ¡rquez;1967;978-004;FicciÃ³n;LEIDO;471
+NOVELA;1;Orgullo y Prejuicio;Jane Austen;1813;978-003;Clásicos;LEIDO;432
+NOVELA;2;Cien años de soledad;Gabriel García Márquez;1967;978-004;Ficción;LEIDO;471
 NOVELA;3;El nombre de la rosa;Umberto Eco;1980;978-005;Thriller;LEYENDO;502
-NOVELA;4;La sombra del viento;Carlos Ruiz ZafÃ³n;2001;978-006;Thriller;LEIDO;568
-NOVELA;5;DrÃ¡cula;Bram Stoker;1897;978-007;Terror;PENDIENTE;418
+NOVELA;4;La sombra del viento;Carlos Ruiz Zafón;2001;978-006;Thriller;LEIDO;568
+NOVELA;5;Drácula;Bram Stoker;1897;978-007;Terror;PENDIENTE;418
 NOVELA;6;It;Stephen King;1986;978-008;Terror;LEYENDO;1138
 NOVELA;7;Yo antes de ti;Jojo Moyes;2012;978-009;Romance;LEIDO;369
 NOVELA;8;Outlander;Diana Gabaldon;1991;978-010;Romance;PENDIENTE;627
-NOVELA;9;El alquimista;Paulo Coelho;1988;978-011;FicciÃ³n;LEIDO;208
-NOVELA;10;El cÃ³digo Da Vinci;Dan Brown;2003;978-012;Thriller;LEIDO;454
+NOVELA;9;El alquimista;Paulo Coelho;1988;978-011;Ficción;LEIDO;208
+NOVELA;10;El código Da Vinci;Dan Brown;2003;978-012;Thriller;LEIDO;454
 COMIC;11;Berserk;Kentaro Miura;1989;978-101;Manga;LEYENDO;1;Seinen
 COMIC;12;One Piece;Eiichiro Oda;1997;978-102;Manga;LEYENDO;1;Shonen
 COMIC;13;Attack on Titan;Hajime Isayama;2009;978-103;Manga;LEIDO;1;Shonen
@@ -16,12 +16,16 @@ COMIC;15;Watchmen;Alan Moore;1986;978-105;Comic;LEIDO;1;Adulto
 COMIC;16;Maus;Art Spiegelman;1980;978-106;Comic;LEIDO;1;Adulto
 COMIC;17;Naruto;Masashi Kishimoto;1999;978-107;Manga;LEIDO;1;Shonen
 COMIC;18;Fullmetal Alchemist;Hiromu Arakawa;2001;978-108;Manga;LEIDO;1;Shonen
-LIBROTECNICO;19;Clean Code;Robert C. Martin;2008;978-201;Ciencia/Letras;LEIDO;ProgramaciÃ³n;Intermedio
-LIBROTECNICO;20;El arte de la guerra;Sun Tzu;500;978-202;Ciencia/Letras;LEIDO;Estrategia;BÃ¡sico
-LIBROTECNICO;21;Sapiens;Yuval Noah Harari;2011;978-203;Ciencia/Letras;LEIDO;Historia y AntropologÃ­a;BÃ¡sico
-LIBROTECNICO;22;Design Patterns;Gang of Four;1994;978-204;Ciencia/Letras;LEYENDO;Arquitectura de Software;Avanzado
-LIBROTECNICO;23;El universo en una cÃ¡scara de nuez;Stephen Hawking;2001;978-205;Ciencia/Letras;PENDIENTE;FÃ­sica y CosmologÃ­a;Intermedio
-LIBROTECNICO;25;El Programador PragmÃ¡tico;Andrew Hunt;1999;978-014;ProgramaciÃ³n;PENDIENTE;Buenas prÃ¡cticas;Avanzado
-LIBROTECNICO;26;IntroducciÃ³n a los Algoritmos;Thomas H. Cormen;2009;978-015;Algoritmos;PENDIENTE;Estructuras de datos;Experto
-LIBROTECNICO;28;The Pragmatic Programmer;David Thomas;2019;978-017;ProgramaciÃ³n;PENDIENTE;Desarrollo de software;Intermedio
-LIBROTECNICO;29;Structure and Interpretation;Harold Abelson;1996;978-018;ProgramaciÃ³n;PENDIENTE;InterpretaciÃ³n de programas;Experto
+LIBROTECNICO;25;El Programador Pragmático;Andrew Hunt;1999;978-014;Programación;PENDIENTE;Buenas prácticas;Avanzado
+LIBROTECNICO;26;Introducción a los Algoritmos;Thomas H. Cormen;2009;978-015;Algoritmos;PENDIENTE;Estructuras de datos;Experto
+LIBROTECNICO;28;The Pragmatic Programmer;David Thomas;2019;978-017;Programación;PENDIENTE;Desarrollo de software;Intermedio
+LIBROTECNICO;29;Structure and Interpretation;Harold Abelson;1996;978-018;Programación;PENDIENTE;Interpretación de programas;Experto
+LIBROTECNICO;30;You Don't Know JS;Kyle Simpson;2015;978-206;Programación;LEIDO;Programación;Intermedio
+LIBROTECNICO;31;Refactoring;Martin Fowler;2018;978-207;Programación;LEIDO;Calidad de Software;Intermedio
+LIBROTECNICO;32;The Mythical Man-Month;Frederick P. Brooks;1975;978-208;Programación;LEIDO;Gestión de Proyectos;Básico
+LIBROTECNICO;33;Código Limpio en Python;Mariano Anaya;2020;978-209;Programación;LEYENDO;Programación;Intermedio
+LIBROTECNICO;34;Sistemas Operativos Modernos;Andrew S. Tanenbaum;2014;978-210;Programación;PENDIENTE;Sistemas Operativos;Avanzado
+LIBROTECNICO;35;Inteligencia Artificial: Un Enfoque Moderno;Stuart Russell;2020;978-211;Programación;PENDIENTE;Inteligencia Artificial;Avanzado
+LIBROTECNICO;36;Redes de Computadoras;Andrew S. Tanenbaum;2010;978-212;Programación;PENDIENTE;Redes;Avanzado
+LIBROTECNICO;37;Deep Learning;Ian Goodfellow;2016;978-213;Programación;LEYENDO;Inteligencia Artificial;Experto
+LIBROTECNICO;38;Domain-Driven Design;Eric Evans;2003;978-214;Programación;LEIDO;Arquitectura de Software;Avanzado

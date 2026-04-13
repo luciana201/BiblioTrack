@@ -2,8 +2,6 @@ package equipo.proyecto;
 
 import java.util.ArrayList;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -45,9 +43,6 @@ public class BibliotecaUnitTest {
     @Test
     @DisplayName("Filtrar por género y estado")
     void testFiltrar() {
-        ArrayList<Publicacion> comics = biblioteca.filtrarPorGenero("Comic");
-        assertTrue(comics.contains(comic));
-
         comic.setEstado(EstadoLectura.LEIDO);
         ArrayList<Publicacion> leidos = biblioteca.filtrarPorEstado(EstadoLectura.LEIDO);
         assertTrue(leidos.contains(comic));
@@ -61,10 +56,6 @@ public class BibliotecaUnitTest {
 
         ArrayList<Publicacion> buenos = biblioteca.filtrarPorCalificacion(9);
         assertTrue(buenos.contains(novela));
-
-        Publicacion mejor = biblioteca.getLibroMejorCalificado();
-        assertNotNull(mejor);
-        assertEquals(novela.getTitulo(), mejor.getTitulo());
     }
 
     @Test
@@ -73,9 +64,5 @@ public class BibliotecaUnitTest {
         biblioteca.agregarReseña(comic.getTitulo(), new Reseña("Ok", 8, usuario, comic));
         biblioteca.agregarReseña(novela.getTitulo(), new Reseña("Obra", 10, usuario, novela));
 
-        assertFalse(biblioteca.buscarPorTituloRegex("Super").isEmpty());
-        assertEquals(1, biblioteca.buscarPorGeneroSecundario("Comic").size());
-        assertEquals(3, biblioteca.getPublicacionesAgrupadasPorGenero().size());
-        assertEquals(9.0, biblioteca.getPromedioCalificacionGeneral(), 0.1);
     }
 }

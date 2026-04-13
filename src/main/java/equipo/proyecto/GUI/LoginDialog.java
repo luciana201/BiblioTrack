@@ -168,10 +168,7 @@ public class LoginDialog extends JDialog {
             Usuario nuevo = new Usuario(nombre, id, email);
             biblioteca.agregarUsuario(nuevo);
 
-            GestorArchivos.guardarDatos(biblioteca,
-                "data/biblioteca/biblioteca.csv",
-                "data/usuarios/usuarios.csv",
-                "data/biblioteca/biblioteca.json");
+            GestorArchivos.guardarDatos(biblioteca, AppGui.RUTA_CSV, AppGui.RUTA_USUARIOS, AppGui.RUTA_JSON);
 
             JOptionPane.showMessageDialog(panel,
                 "Cuenta creada. Ya puedes iniciar sesión.",
@@ -190,7 +187,7 @@ public class LoginDialog extends JDialog {
 
     private void intentarLogin() {
         String nombre = txtNombre.getText().trim();
-        String email  = txtEmail.getText().trim();
+        String email = txtEmail.getText().trim();
 
         if (nombre.isEmpty() || email.isEmpty()) {
             lblError.setText("Completa nombre y email.");
@@ -199,10 +196,13 @@ public class LoginDialog extends JDialog {
 
         Usuario u = biblioteca.buscarUsuario(nombre);
         if (u == null) {
-            u = new Usuario(nombre, nombre.toLowerCase(), email);
-            biblioteca.agregarUsuario(u);
+            lblError.setText("Usuario no encontrado. Regístrate.");
+            return;
         }
-
+        if (!u.getEmail().equalsIgnoreCase(email)) {
+            lblError.setText("Email incorrecto.");
+            return;
+        }
         dispose();
         new MainFrame(biblioteca, u).setVisible(true);
     }

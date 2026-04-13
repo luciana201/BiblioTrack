@@ -6,6 +6,7 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Pattern;
 
 public class PanelBusqueda extends JPanel {
     
@@ -124,24 +125,25 @@ public class PanelBusqueda extends JPanel {
         
         // Filtrar por texto de búsqueda
         if (!textoBusqueda.isEmpty()) {
-            resultados = resultados.stream()
-                .filter(p -> p.getTitulo().toLowerCase().contains(textoBusqueda.toLowerCase()) ||
-                            p.getAutor().toLowerCase().contains(textoBusqueda.toLowerCase()))
-                .collect(java.util.stream.Collectors.toList());
+            List<Publicacion> pubs = biblioteca.buscarPorTituloRegex(".*" + Pattern.quote(textoBusqueda) + ".*");
+            if (!pubs.isEmpty()) {
+                resultados.retainAll(pubs);
+            } else {
+                resultados.clear(); //si no hay iguales, no mostrar nd
+            }
         }
         
-        // Filtrar por género
+        // Filtrar por genero
         if (!"Todos".equals(generoSeleccionado)) {
-            resultados = resultados.stream()
-                .filter(p -> generoSeleccionado.equalsIgnoreCase(p.getGenero()))
-                .collect(java.util.stream.Collectors.toList());
+            resultados.retainAll(biblioteca.filtrarPorGenero(generoSeleccionado));
         }
-        
+
         // Filtrar por tipo
         if (!"Todos".equals(tipoSeleccionado)) {
-            resultados = resultados.stream()
-                .filter(p -> p.getTipo().equals(tipoSeleccionado))
-                .collect(java.util.stream.Collectors.toList());
+            int limite = (int) biblioteca.getLibros().stream()
+                    .filter(p -> p.getTipo().equalsIgnoreCase(tipoSeleccionado))
+                    .count();
+            resultados.retainAll(biblioteca.filtrarPorTipo(tipoSeleccionado, limite));
         }
         
         actualizarTabla(resultados);
