@@ -232,7 +232,10 @@ public class GestorArchivos {
                     int calificacion = getJsonInt(reseñaJson, "calificacion", 0);
                     Usuario usuario = biblioteca.buscarUsuario(usuarioNombre);
                     String fechaStr = getJsonString(reseñaJson, "fecha");
-                    LocalDate fecha = fechaStr != null ? LocalDate.parse(fechaStr) : LocalDate.now();
+                    LocalDate fecha = null;
+                    if (fechaStr != null && !fechaStr.isEmpty()) {
+                        fecha = LocalDate.parse(fechaStr);
+                    }
                     if (usuario == null) {
                         usuario = new Usuario(usuarioNombre,
                             usuarioNombre.replaceAll("\\s+", "").toLowerCase(), "");

@@ -14,6 +14,7 @@ public class Reseña {
         this.calificacion = pcalificacion;
         this.usuario = pusuario;
         this.publicacion = ppublicacion;
+        this.fecha = LocalDate.now();
     }
     
     public Reseña(String pcomentario, int pcalificacion, Usuario pusuario, Publicacion ppublicacion, LocalDate pfecha) {
@@ -21,7 +22,7 @@ public class Reseña {
         this.calificacion = pcalificacion;
         this.usuario = pusuario;
         this.publicacion = ppublicacion;
-        this.fecha = pfecha;
+        this.fecha = (pfecha != null ? pfecha : LocalDate.now());;
     }
     public int getId(){
         return this.id;
