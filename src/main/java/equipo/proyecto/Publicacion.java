@@ -120,6 +120,7 @@ public abstract class Publicacion {
                 .map(r -> "{\"usuario\":\"" + escapeJson(r.getUsuario().getNombre()) +
                         "\",\"comentario\":\"" + escapeJson(r.getComentario()) +
                         "\",\"calificacion\":" + r.getCalificacion() +
+                        ",\"fecha\":\"" + r.getFecha().toString() + "\"" +
                         "}")
                 .collect(Collectors.joining(",")) + "]";
     }

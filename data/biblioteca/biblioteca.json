@@ -34,12 +34,12 @@
         {
       "usuario":"Maria",
       "comentario":"Una obra maestra de la literatura inglesa, los personajes son increíbles.",
-      "calificacion":10
+      "calificacion":10,"fecha":"2026-04-16"
     },
         {
       "usuario":"Carlos",
       "comentario":"Muy buena, aunque algo lenta al principio.",
-      "calificacion":8
+      "calificacion":8,"fecha":"2026-04-16"
     }
       ],
       "numeroPaginas":432
@@ -56,12 +56,12 @@
         {
       "usuario":"Carlos",
       "comentario":"El realismo mágico en su máxima expresión. Imprescindible.",
-      "calificacion":10
+      "calificacion":10,"fecha":"2026-04-16"
     },
         {
       "usuario":"Maria",
       "comentario":"Compleja pero brillante, hay que leerla con calma.",
-      "calificacion":9
+      "calificacion":9,"fecha":"2026-04-16"
     }
       ],
       "numeroPaginas":471
@@ -78,7 +78,7 @@
         {
       "usuario":"Carlos",
       "comentario":"Intrigante y erudita, una joya del thriller histórico.",
-      "calificacion":9
+      "calificacion":9,"fecha":"2026-04-16"
     }
       ],
       "numeroPaginas":502
@@ -95,7 +95,7 @@
         {
       "usuario":"Maria",
       "comentario":"Barcelona cobra vida en cada página. Una historia que engancha desde el principio.",
-      "calificacion":9
+      "calificacion":9,"fecha":"2026-04-16"
     }
       ],
       "numeroPaginas":568
@@ -123,7 +123,7 @@
         {
       "usuario":"Carlos",
       "comentario":"Aterrador y largo pero imposible de soltar.",
-      "calificacion":9
+      "calificacion":9,"fecha":"2026-04-16"
     }
       ],
       "numeroPaginas":1138
@@ -140,7 +140,7 @@
         {
       "usuario":"Maria",
       "comentario":"Me hizo llorar sin parar. Una historia preciosa y muy emotiva.",
-      "calificacion":9
+      "calificacion":9,"fecha":"2026-04-16"
     }
       ],
       "numeroPaginas":369
@@ -168,12 +168,12 @@
         {
       "usuario":"Maria",
       "comentario":"Inspirador y filosófico, una lectura que deja huella.",
-      "calificacion":8
+      "calificacion":8,"fecha":"2026-04-16"
     },
         {
       "usuario":"Carlos",
       "comentario":"Bonito pero algo simple para mi gusto.",
-      "calificacion":7
+      "calificacion":7,"fecha":"2026-04-16"
     }
       ],
       "numeroPaginas":208
@@ -190,7 +190,7 @@
         {
       "usuario":"Carlos",
       "comentario":"Muy entretenido, no pude parar de leer hasta el final.",
-      "calificacion":8
+      "calificacion":8,"fecha":"2026-04-16"
     }
       ],
       "numeroPaginas":454
@@ -207,12 +207,12 @@
         {
       "usuario":"Carlos",
       "comentario":"La obra maestra del manga oscuro. Arte y narrativa sin igual.",
-      "calificacion":10
+      "calificacion":10,"fecha":"2026-04-16"
     },
         {
       "usuario":"Maria",
       "comentario":"Muy oscuro para mi gusto pero el dibujo es impresionante.",
-      "calificacion":8
+      "calificacion":8,"fecha":"2026-04-16"
     }
       ],
       "volumen":1,"demografia":"Seinen"
@@ -229,7 +229,12 @@
         {
       "usuario":"Carlos",
       "comentario":"El mejor manga de aventuras de todos los tiempos, sin discusión.",
-      "calificacion":10
+      "calificacion":10,"fecha":"2026-04-16"
+    },
+        {
+      "usuario":"Dayana",
+      "comentario":"Obra msestra, la mejor obra que he leido.",
+      "calificacion":10,"fecha":"2026-04-16"
     }
       ],
       "volumen":1,"demografia":"Shonen"
@@ -246,12 +251,12 @@
         {
       "usuario":"Maria",
       "comentario":"Increíble historia con un final que genera mucho debate.",
-      "calificacion":9
+      "calificacion":9,"fecha":"2026-04-16"
     },
         {
       "usuario":"Carlos",
       "comentario":"Los primeros arcos son perfectos, el final es divisivo pero valiente.",
-      "calificacion":8
+      "calificacion":8,"fecha":"2026-04-16"
     }
       ],
       "volumen":1,"demografia":"Shonen"
@@ -268,7 +273,7 @@
         {
       "usuario":"Carlos",
       "comentario":"El dibujo es de otro nivel. Una joya absoluta.",
-      "calificacion":10
+      "calificacion":10,"fecha":"2026-04-16"
     }
       ],
       "volumen":1,"demografia":"Seinen"
@@ -285,7 +290,7 @@
         {
       "usuario":"Maria",
       "comentario":"Deconstruye el género de superhéroes de forma magistral.",
-      "calificacion":10
+      "calificacion":10,"fecha":"2026-04-16"
     }
       ],
       "volumen":1,"demografia":"Adulto"
@@ -302,12 +307,12 @@
         {
       "usuario":"Maria",
       "comentario":"Devastador y necesario. Un cómic que todo el mundo debería leer.",
-      "calificacion":10
+      "calificacion":10,"fecha":"2026-04-16"
     },
         {
       "usuario":"Carlos",
       "comentario":"Una obra única que trasciende el formato del cómic.",
-      "calificacion":9
+      "calificacion":9,"fecha":"2026-04-16"
     }
       ],
       "volumen":1,"demografia":"Adulto"
@@ -324,7 +329,7 @@
         {
       "usuario":"Carlos",
       "comentario":"Mi manga de la infancia, siempre tendrá un lugar especial.",
-      "calificacion":8
+      "calificacion":8,"fecha":"2026-04-16"
     }
       ],
       "volumen":1,"demografia":"Shonen"
@@ -341,12 +346,12 @@
         {
       "usuario":"Maria",
       "comentario":"Historia perfectamente construida de principio a fin.",
-      "calificacion":10
+      "calificacion":10,"fecha":"2026-04-16"
     },
         {
       "usuario":"Carlos",
       "comentario":"Uno de los mejores mangas jamás escritos. El final es redondo.",
-      "calificacion":10
+      "calificacion":10,"fecha":"2026-04-16"
     }
       ],
       "volumen":1,"demografia":"Shonen"
@@ -411,7 +416,7 @@
         {
       "usuario":"Carlos",
       "comentario":"El libro definitivo para entender JavaScript a fondo. Imprescindible.",
-      "calificacion":10
+      "calificacion":10,"fecha":"2026-04-16"
     }
       ],
       "tema":"Programación",
@@ -429,12 +434,12 @@
         {
       "usuario":"Maria",
       "comentario":"Muy práctico, lleno de ejemplos reales que puedes aplicar desde el día uno.",
-      "calificacion":9
+      "calificacion":9,"fecha":"2026-04-16"
     },
         {
       "usuario":"Carlos",
       "comentario":"El complemento perfecto de Clean Code. Lo tengo siempre a mano.",
-      "calificacion":9
+      "calificacion":9,"fecha":"2026-04-16"
     }
       ],
       "tema":"Calidad de Software",
@@ -452,7 +457,7 @@
         {
       "usuario":"Carlos",
       "comentario":"Clásico atemporal sobre gestión de proyectos software. Sigue siendo válido hoy.",
-      "calificacion":9
+      "calificacion":9,"fecha":"2026-04-16"
     }
       ],
       "tema":"Gestión de Proyectos",
@@ -470,7 +475,7 @@
         {
       "usuario":"Maria",
       "comentario":"Perfecto para llevar tus habilidades en Python al siguiente nivel.",
-      "calificacion":8
+      "calificacion":8,"fecha":"2026-04-16"
     }
       ],
       "tema":"Programación",
@@ -524,7 +529,7 @@
         {
       "usuario":"Carlos",
       "comentario":"La biblia del aprendizaje profundo. Muy denso pero completísimo.",
-      "calificacion":10
+      "calificacion":10,"fecha":"2026-04-16"
     }
       ],
       "tema":"Inteligencia Artificial",
@@ -542,12 +547,12 @@
         {
       "usuario":"Carlos",
       "comentario":"Fundamental para diseñar software complejo. Cambia la manera de pensar.",
-      "calificacion":9
+      "calificacion":9,"fecha":"2026-04-16"
     },
         {
       "usuario":"Maria",
       "comentario":"Difícil al principio pero muy valioso una vez que lo entiendes.",
-      "calificacion":8
+      "calificacion":8,"fecha":"2026-04-16"
     }
       ],
       "tema":"Arquitectura de Software",

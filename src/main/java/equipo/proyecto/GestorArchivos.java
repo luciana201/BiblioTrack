@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -230,14 +231,15 @@ public class GestorArchivos {
                     String comentario = getJsonString(reseñaJson, "comentario");
                     int calificacion = getJsonInt(reseñaJson, "calificacion", 0);
                     Usuario usuario = biblioteca.buscarUsuario(usuarioNombre);
+                    String fechaStr = getJsonString(reseñaJson, "fecha");
+                    LocalDate fecha = fechaStr != null ? LocalDate.parse(fechaStr) : LocalDate.now();
                     if (usuario == null) {
                         usuario = new Usuario(usuarioNombre,
                             usuarioNombre.replaceAll("\\s+", "").toLowerCase(), "");
                         biblioteca.agregarUsuario(usuario);
                     }
-                    Reseña reseña = new Reseña(comentario, calificacion, usuario, p);
+                    Reseña reseña = new Reseña(comentario, calificacion, usuario, p, fecha);
                     p.agregarReseña(reseña);
-                    usuario.agregarReseña(reseña);
                 }
             }
         }
