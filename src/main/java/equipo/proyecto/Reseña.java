@@ -8,12 +8,20 @@ public class Reseña {
     private LocalDate fecha;
     private Usuario usuario;
     private Publicacion publicacion;
-    public Reseña(String pcomentario, int pcalificacion, Usuario pusuario, Publicacion ppublicacion){
+ 
+    public Reseña(String pcomentario, int pcalificacion, Usuario pusuario, Publicacion ppublicacion) {
         this.comentario = pcomentario;
         this.calificacion = pcalificacion;
         this.usuario = pusuario;
         this.publicacion = ppublicacion;
-        this.fecha = LocalDate.now();
+    }
+    
+    public Reseña(String pcomentario, int pcalificacion, Usuario pusuario, Publicacion ppublicacion, LocalDate pfecha) {
+        this.comentario = pcomentario;
+        this.calificacion = pcalificacion;
+        this.usuario = pusuario;
+        this.publicacion = ppublicacion;
+        this.fecha = pfecha;
     }
     public int getId(){
         return this.id;

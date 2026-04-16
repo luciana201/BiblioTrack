@@ -70,7 +70,7 @@ public class PanelDetalleLibro extends JPanel {
         JLabel lblEstadoLectura = new JLabel(
             "Estado: " + obtenerTextoEstado(estadoPersonal));
 
-        double media = calcularMedia();
+        double media = mediaDePublicacion(publicacion);
         JLabel lblRating = new JLabel(media == 0
             ? "Sin puntuaciones aún"
             : String.format("%.1f/10  %s",
@@ -148,23 +148,23 @@ public class PanelDetalleLibro extends JPanel {
         formResena.add(btnGuardar, BorderLayout.SOUTH);
 
         btnGuardar.addActionListener(e -> {
-            String comentario =
-                txtComentario.getText().trim();
+            String comentario = txtComentario.getText().trim();
             if (comentario.isEmpty()) {
                 labelEstado.setText(
-                    " Escribe un comentario.");
+                        " Escribe un comentario.");
                 return;
             }
             int cal = (int) spinnerCal.getValue();
             Reseña nueva = new Reseña(
-                comentario, cal,
-                usuarioActual, publicacion);
-            usuarioActual.agregarReseña(nueva);
-            biblioteca.agregarReseña(
-                publicacion.getTitulo(), nueva);
+                    comentario, cal,
+                    usuarioActual, publicacion);
+           biblioteca.agregarReseña(publicacion.getTitulo(), nueva);
+
+            GestorArchivos.guardarDatos(biblioteca, AppGui.RUTA_CSV, AppGui.RUTA_USUARIOS, AppGui.RUTA_JSON);
+
             labelEstado.setText(
-                " Reseña guardada para: " +
-                publicacion.getTitulo());
+                    " Reseña guardada para: " +
+                            publicacion.getTitulo());
             txtComentario.setText("");
             actualizarListaResenas(listaResenas);
             listaResenas.revalidate();
@@ -182,9 +182,7 @@ public class PanelDetalleLibro extends JPanel {
             biblioteca.getPublicacionesPorGenero(
                 publicacion.getGenero());
         mismoGenero.sort((a, b) ->
-            Double.compare(
-                calcularMediaDe(b),
-                calcularMediaDe(a)));
+            Double.compare(mediaDePublicacion(b),mediaDePublicacion(a)));
 
         String[] cols = {"#", "Título", "Autor", "Media"};
         DefaultTableModel modelo =
@@ -198,7 +196,7 @@ public class PanelDetalleLibro extends JPanel {
             modelo.addRow(new Object[]{
                 pos++, p.getTitulo(), p.getAutor(),
                 String.format("%.1f",
-                    calcularMediaDe(p)) + "/10"
+                    mediaDePublicacion(p)) + "/10"
             });
         }
 
@@ -266,21 +264,11 @@ public class PanelDetalleLibro extends JPanel {
         }
     }
 
-    private double calcularMedia() {
-        return usuarioActual.getReseñas().stream()
-            .filter(r -> r.getPublicacion().getTitulo()
-                .equals(publicacion.getTitulo()))
-            .mapToInt(Reseña::getCalificacion)
-            .average().orElse(0);
-    }
-
-    private double calcularMediaDe(Publicacion pub) {
-        return biblioteca.getUsuarios().stream()
-            .flatMap(u -> u.getReseñas().stream())
-            .filter(r -> r.getPublicacion().getTitulo()
-                .equals(pub.getTitulo()))
-            .mapToInt(Reseña::getCalificacion)
-            .average().orElse(0);
+    private double mediaDePublicacion(Publicacion pub) {
+        return pub.getReseñas().stream()
+                .mapToInt(Reseña::getCalificacion)
+                .average()
+                .orElse(0);
     }
 
     private String estrellas(double media10) {
@@ -295,12 +283,7 @@ public class PanelDetalleLibro extends JPanel {
         panel.removeAll();
         DateTimeFormatter fmt =
             DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        List<Reseña> todas =
-            biblioteca.getUsuarios().stream()
-            .flatMap(u -> u.getReseñas().stream())
-            .filter(r -> r.getPublicacion().getTitulo()
-                .equals(publicacion.getTitulo()))
-            .collect(Collectors.toList());
+        List<Reseña> todas = publicacion.getReseñas();
 
         if (todas.isEmpty()) {
             panel.add(new JLabel(
