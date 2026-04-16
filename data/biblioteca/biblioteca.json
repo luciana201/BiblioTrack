@@ -61,7 +61,7 @@
         {
       "usuario":"Maria",
       "comentario":"Compleja pero brillante, hay que leerla con calma.",
-      "calificacion":9,"fecha":"2026-04-16"
+      "calificacion":9,"fecha":"2026-04-12"
     }
       ],
       "numeroPaginas":471
@@ -95,7 +95,7 @@
         {
       "usuario":"Maria",
       "comentario":"Barcelona cobra vida en cada página. Una historia que engancha desde el principio.",
-      "calificacion":9,"fecha":"2026-04-16"
+      "calificacion":9,"fecha":"2026-04-13"
     }
       ],
       "numeroPaginas":568
@@ -108,7 +108,13 @@
       "añoPublicacion":1897,"isbn":"978-007",
       "genero":"Terror",
       "estado":"PENDIENTE",
-      "reseñas":[],
+      "reseñas":[
+        {
+      "usuario":"Dayana",
+      "comentario":"Interesante, realmente atrapa en las primeras paginas.",
+      "calificacion":9,"fecha":"2026-04-16"
+    }
+      ],
       "numeroPaginas":418
     },
     {
@@ -229,11 +235,16 @@
         {
       "usuario":"Carlos",
       "comentario":"El mejor manga de aventuras de todos los tiempos, sin discusión.",
-      "calificacion":10,"fecha":"2026-04-16"
+      "calificacion":10,"fecha":"2026-02-10"
     },
         {
       "usuario":"Dayana",
       "comentario":"Obra msestra, la mejor obra que he leido.",
+      "calificacion":10,"fecha":"2026-04-16"
+    },
+        {
+      "usuario":"Dayana",
+      "comentario":"woowwwww",
       "calificacion":10,"fecha":"2026-04-16"
     }
       ],
